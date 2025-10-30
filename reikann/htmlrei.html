@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>縦一列レイアウトのサイト</title>
+  <link rel="stylesheet" href="style.css">
+		<script type="text/javascript" src="system.js"></script>
+</head>
+<body>
+
+  <header>
+    <img src="imgrei/header.png" alt=""/>
+  </header>
+
+
+	  <div class="main">
+<div class="block">
+    <div class="inblock">
+	  <div class="intro">
+	  <h1>謎解きマッチングについて </h1><br><br>
+	  <h4>謎解きマッチングは<span class="kuroshiro">一定の謎解き力</span>がある者のみご利用できるサービスです。</h4><br>
+		  <h4>今からあなたには謎を解いていただき、当アプリを利用する<span class="kuroshiro">資格</span>があるか、	<br>また、あなたが<span class="kuroshiro">どういう者か</span>を診断いたします。</h4>
+	  <br>
+	  <h4>その診断結果に基づき<span class="kuroshiro">運命候補</span>を選出いたします。
+	　<br><br><br><br>
+	　最後に、あなたが<span class="kuroshiro">失踪</span>したとしても一切の責任を負いかねます。</h4>
+	　<br><br><br><br><br><br>
+		  
+      </div>
+		
+      　　<h2>第一問</h2>
+　　　　　　<img src="imgrei/1-2.png" class="riddle" alt="問題">
+          <div class="selectarea">
+            <div class="text">選択肢</div>
+            <span id="1_1"><img src="select/1_1.png" class="select" alt="選択肢" onclick="select(1,String(1))"></span>
+            <span id="1_2"><img src="select/1_2.png" class="select" alt="選択肢" onclick="select(1,String(2))"></span>
+            <span id="1_3"><img src="select/1_3.png" class="select" alt="選択肢" onclick="select(1,String(3))"></span>
+            <span id="1_4"><img src="select/1_4.png" class="select" alt="選択肢" onclick="select(1,String(4))"></span>
+            <span id="1_5"><img src="select/1_5.png" class="selected" alt="選択肢"></span>
+      </div>
+    </div>
+    
+        <h2>第二問</h2>
+        <div class="inblock">
+          <img src="imgrei/1-２.png" class="riddle" alt="問題">
+          <div class="selectarea">
+            <div class="text">選択肢</div>
+            <span id="2_1"><img src="select/2_1.png" class="select" alt="選択肢" onclick="select(2,String(1))"></span>
+            <span id="2_2"><img src="select/2_2.png" class="select" alt="選択肢" onclick="select(2,String(2))"></span>
+            <span id="2_3"><img src="select/2_3.png" class="select" alt="選択肢" onclick="select(2,String(3))"></span>
+            <span id="2_4"><img src="select/2_4.png" class="select" alt="選択肢" onclick="select(2,String(4))"></span>
+            <span id="2_5"><img src="select/2_5.png" class="selected" alt="選択肢"></span>
+          </div>
+    </div>
+        <div class="form_area">
+          <div class="message" id="message">ボタンを押せば回答送信が可能です</div>
+          <input type="button" class="button" id="button" value="送信" onclick="check()">
+        </div>
+      </div>
+</div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 My Gallery</p>
+</footer>
+
+</body>
+</html>

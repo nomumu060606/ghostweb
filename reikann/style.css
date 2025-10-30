@@ -1,0 +1,211 @@
+/* 全体の基本設定 */
+body {
+  background-color: #00C3FF;
+  font-family: "BIZ UD明朝 Medium";
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+
+*{
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-family: serif;
+  font-weight: bold;
+}
+
+.main{
+  width: auto;
+}
+
+/* 後ろの基本設定 */
+.block {
+    width: 800px;
+    margin: 50px auto;
+    padding: 50px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+}
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.inblock {
+    margin: 50px auto 100px auto;
+	color: #010000;
+}
+
+.selectarea{
+  width: 550px;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: lightgray;
+  border-radius: 30px;
+}
+
+.text{
+  margin: auto;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+img.riddle{
+  margin: 0 auto;
+  width: 700px;
+  border: solid 5px black;
+  border-radius: 20px;
+}
+
+img.select{
+  margin: 10px 10px;
+  width: 80px;
+  cursor: pointer;
+}
+
+img.selected{
+  margin: 10px 10px;
+  width: 80px;
+}
+
+.button{
+  width: 250px;
+  height: 70px;
+  font-size: 45px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.message{
+  font-size: 25px;
+  font-weight: bold;
+  color: #010000;
+}
+
+.tweetArea{
+  margin: 30px;
+}
+
+form{
+  border:2px solid #D09B52;
+}
+#focus{
+  border:3px solid #fef6fb;
+  box-shadow:0 0 10px 0 #D09B52;
+  position:absolute;
+  transition:
+    width .2s ease, 
+    height .2s ease, 
+    left .2s ease, 
+    top .2s ease, 
+    border-radius .2s ease;
+  pointer-events:none;
+  z-index:5;
+  border-radius:10px;
+  display:none;
+}
+
+
+
+
+
+/* ヘッダー */
+header {
+  text-align: center;
+  background-color: #FCFCFC;
+  color: black;
+  padding: 10px 20px;
+}
+
+header h1 {
+  margin-bottom: 0px;
+}
+
+/* コンテンツ全体 */
+.content {
+  max-width: 900px;    /* 横幅を少し狭めて中央に配置 */
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* 各セクション（画像＋テキスト） */
+.item {
+  text-align: center;
+  background-color: #fff;
+  padding: 30px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* 画像 */
+.item img {
+  width: 100%;         /* 画面幅に合わせて自動で縮小 */
+  height: auto;
+  max-width: 1280px;   /* 元のサイズより大きくならないように制限 */
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* 見出しと文章 */
+.item h2 {
+  color: #010000;
+  margin-bottom: 10px;
+}
+
+.item p {
+  line-height: 1.8;
+  font-size: 30px;
+}
+/* 謎解きマッチング説明 */
+.kuroshiro {
+background-color: black; /* 背景色を黄色に設定 */
+color: white; /* 文字色を黒に設定 */
+padding: 0px; /* 余白を追加 */
+}
+
+/* 選択肢画像の横並び */
+.choices {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap; /* 小さい画面では折り返す */
+}
+
+.choice {
+  flex: 1 1 5%;      /* 最小幅18%で5枚並べる */
+  max-width: 150px;   /* 画像の最大幅を制限 */
+  aspect-ratio: 1/1;  /* 正方形を維持 */
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.choice:hover {
+  transform: scale(1.05);
+  border-color: #4a90e2;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+  .choices {
+    overflow-x: auto;      /* 横スクロール */
+  }
+  .choice {
+    flex: 0 0 120px;       /* 固定幅にしてスクロール可能 */
+    max-width: none;       /* スマホでは最大幅制限を外す */
+  }
+}
+
+
+/* フッター */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #eee;
+  color: #666;
+}
