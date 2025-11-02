@@ -1,13 +1,4 @@
 /* 全体の基本設定 */
-body {
-  background-color: #00C3FF;
-  font-family: "BIZ UD明朝 Medium";
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
-
-
 *{
   padding: 0;
   margin: 0;
@@ -15,6 +6,14 @@ body {
   font-family: serif;
   font-weight: bold;
 }
+
+  header {
+    background-color: white; /* ← 背景を白くする！ */
+    color: black;             /* ← 文字の色を黒にする */
+    padding: 20px;            /* ← 内側の余白をつけて見やすくする */
+    text-align: center;       /* ← 文字を中央にそろえる */
+    border-bottom: 2px solid #ccc; /* ← 下にうっすら線を引く（おしゃれ） */
+  }
 
 .main{
   width: auto;
@@ -191,7 +190,7 @@ padding: 0px; /* 余白を追加 */
 }
 
 /* スマホ対応 */
-@media (max-width: 600px) {
+@media (max-width : 810px ){
   .choices {
     overflow-x: auto;      /* 横スクロール */
   }
