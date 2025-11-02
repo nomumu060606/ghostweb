@@ -17,15 +17,15 @@
 
 .main{
   width: auto;
-  background-color: #68DFE1;
+  background-color: #010000;
 }
 
 /* 後ろの基本設定 */
 .block {
     width: 800px;
-    margin: 50px auto;
+    margin: 30px auto;
     padding: 50px;
-	background-color: #FFFFFF;
+	background-color: #010000;
 }
 div {
     display: block;
@@ -88,7 +88,7 @@ img.selected{
 }
 
 form{
-  border:2px solid #D09B52;
+  ;
 }
 #focus{
   border:3px solid #fef6fb;
@@ -207,4 +207,19 @@ footer {
   padding: 20px;
   background-color: #eee;
   color: #666;
+}
+
+.banner-img {
+  width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.banner-img2 {
+  width: 200px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.becouse {
+	color: #FFFFFF;
 }

@@ -23,7 +23,7 @@
 /* 後ろの基本設定 */
 .block {
     width: 800px;
-    margin: 50px auto;
+    margin: 30px auto;
     padding: 50px;
 	background-color: #FFFFFF;
 }
@@ -88,7 +88,7 @@ img.selected{
 }
 
 form{
-  border:2px solid #D09B52;
+  ;
 }
 #focus{
   border:3px solid #fef6fb;
@@ -207,4 +207,138 @@ footer {
   padding: 20px;
   background-color: #eee;
   color: #666;
+}
+
+✅ 追加CSS（style2.cssの末尾に貼る）
+/* ==== 入力フォームをスタイリッシュに ==== */
+.styled-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 40px auto;
+  max-width: 400px;
+}
+
+/* 入力欄（下線のみ） */
+.styled-input {
+  width: 40%;
+  padding: 10px 5px;
+  font-size: 18px;
+  border: none;
+  border-bottom: 2px solid #999;
+  background-color: transparent;
+  color: #000;
+  text-align: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
+}
+
+.styled-input::placeholder {
+  color: #aaa;
+}
+
+/* フォーカス時（アニメーションで色変化） */
+.styled-input:focus {
+  border-bottom: 2px solid #4a90e2;
+  box-shadow: 0 2px 0 0 #4a90e2;
+}
+
+/* 送信ボタン */
+.styled-submit {
+  padding: 10px 30px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #68DFE1;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.styled-submit:hover {
+  background-color: #00BBFF;
+  transform: translateY(-2px);
+}
+
+.styled-submit:active {
+  transform: translateY(0);
+}
+#resultMessage {
+  font-size: 5px;
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+#question2 {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+#question2.show {
+  display: block;
+  opacity: 1;
+}
+
+.result-message {
+  font-size: 16px;
+  font-weight: bold;
+  color: #555; /* ← 文字色を落ち着かせる */
+  margin-top: 12px;
+  transition: all 0.3s ease;
+}
+
+/* ==== 次へのバナー ==== */
+.next-banner {
+  text-align: center;
+  margin-top: 60px;
+  opacity: 0;
+  transition: opacity 1s ease, transform 0.5s ease;
+  transform: translateY(30px);
+}
+
+.next-banner.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.banner-img {
+  width: 400px;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.banner-img:hover {
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+/* 表示時にふわっと出る */
+.show {
+  display: block; /* ←これを追加するのがポイント！ */
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
+  img.riddle {
+    width: 95%;
+    border-width: 3px;
+  }
+  .styled-input {
+    width: 80%;
+  }
+  .banner-img {
+    width: 90%;
+  }
 }
