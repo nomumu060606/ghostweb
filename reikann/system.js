@@ -48,7 +48,7 @@ function check(){
 	document.getElementById('message').innerText = "判定中";
 	
 	if(answers=="11"||answers=="13"||answers=="14"||answers=="15"){
-    document.getElementById('message').innerText = "正解";}
+    location.href = 'https://nomumu060606.github.io/ghostweb/reikann/htmlrei2.html';}
 		
 	else{
     document.getElementById('message').innerText = "不正解の問題があるようです";
