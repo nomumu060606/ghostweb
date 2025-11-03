@@ -8,14 +8,6 @@
   box-sizing: border-box;
 }
 
-/* ヘッダー */
-header {
-  background-color: white;
-  color: black;
-  padding: 20px;
-  text-align: center;
-  border-bottom: 2px solid #ccc;
-}
 
 .main {
   width: 100%;
@@ -23,6 +15,16 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+/* 📱 画面幅に応じて文字を自動縮小する設定 */
+.intro {
+  font-size: clamp(8px, 2vw, 32px);
+  line-height: 1.4;
+}
+
+h2 {
+  font-size: clamp(12px, 2vw, 32px);
+  line-height: 1.4;
 }
 
 /* 背景ブロック */
@@ -67,7 +69,7 @@ img.riddle {
 
 /* 🔸選択肢画像（可変サイズ対応） */
 img.select {
-  width: clamp(50px, 10vw, 100px); /* ← 画面幅に応じて自動縮小 (最小50px〜最大100px) */
+  width: clamp(20px, 10vw, 100px); /* ← 画面幅に応じて自動縮小 (最小50px〜最大100px) */
   height: auto;
   flex-shrink: 0;
   cursor: pointer;
@@ -80,8 +82,11 @@ img.select:hover {
 
 /* 選択時 */
 img.selected {
-  border: 3px solid #D09B52;
-  border-radius: 8px;
+  width: clamp(50px, 10vw, 100px); /* ← 画面幅に応じて自動縮小 (最小50px〜最大100px) */
+  height: auto;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s, border 0.2s;
 }
 
 /* メッセージとボタン */
@@ -90,7 +95,7 @@ img.selected {
 }
 
 .message {
-  font-size: 25px;
+  font-size: clamp(12px, 2vw, 32px);
   font-weight: bold;
   color: #010000;
   margin-bottom: 20px;
@@ -110,4 +115,18 @@ img.selected {
   .block {
     padding: 30px 20px;
   }
+  img.select {
+    width: clamp(20px, 10vw, 80px);
+  }
+  .button {
+    width: 50%;
+    height: 50px;
+	font-size: clamp(14px, 4vw, 22px); /* ← スマホではさらに小さく調整 */
+  }
+}
+
+html, body {
+  overflow-x: hidden;
+  transform: scale(0.9);
+  transform-origin: top center;
 }
