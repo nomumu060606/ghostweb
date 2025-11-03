@@ -17,16 +17,67 @@
     <div class="main">
       <div class="block">
         <div class="inblock">
+<div id="memoryMessage" class="previous-result"></div>
+		<br><br><h2>一部サービスは終了しております。</h2><br>
+			<p2>プロフィールを設定してください。</p2><br><br><br><br>
+		
+		<div id="profileArea" class="profile-setup">
+  <h2>プロフィール設定</h2><br>
+  <form id="profileForm" onsubmit="saveProfile(event)">
+    <label>名前（3文字以内）：
+      <input type="text" id="profileName" maxlength="3" required>
+    </label>
 
+
+    <label>年齢：
+      <select id="profileAge" required>
+        <option value="">選択してください</option>
+        <option value="10代">10代</option>
+        <option value="20代">20代</option>
+        <option value="30代">30代</option>
+        <option value="40代">40代</option>
+        <option value="50代">50代</option>
+        <option value="60代">60代</option>
+        <option value="70代">70代</option>
+        <option value="80代">80代</option>
+        <option value="90代">90代</option>
+      </select>
+    </label>
+
+
+    <label>きらいな食べ物：
+      <select id="profileFood" required>
+        <option value="">選択してください</option>
+        <option value="ナス">ナス</option>
+        <option value="ウリ">ウリ</option>
+        <option value="ネギ">ネギ</option>
+        <option value="ニラ">ニラ</option>
+      </select>
+    </label>
+	  <label>自己紹介：※サービス終了しました</label>
+	  <label>プロフィール画像：※サービス終了しました</label>
+	  <label>謎の選択：※サービス終了しました</label>
+
+ 
+    <br>
+
+    <input type="submit" value="保存" class="styled-submit">
+  </form>
+
+  <p id="profileSavedMessage" class="saved-message"></p>
+</div>
+			
+	<div id="quizSection" class="hidden">
           <div class="intro">
             <img src="imgrei/マッチング候補発見.png" width="400" height="100" alt="タイトル画像">
             <img src="imgrei/霊感募集プロフ2.png" width="500" height="700" alt="プロフィール画像">
-          </div>
+          </div><br><br><br>
+		<p id="numMessage"></p><br><br><br>
 			
           <!-- ✅ 第一問 -->
           <div class="inblock" id="question1">
             <h2>第一問</h2>
-            <img src="imgrei/2-1.png" class="riddle" alt="問題">
+            <img src="imgrei/2-1-1.png" class="riddle" alt="問題">
             <form id="quizForm1" onsubmit="checkAnswerGeneric(event, 1, 'しあい')" class="styled-form">
               <input type="text" id="ans1" placeholder="答えを入力" required class="styled-input">
               <input type="submit" value="答える" class="styled-submit">
@@ -39,7 +90,7 @@
             <h2>第二問</h2>
             <img src="imgrei/2-2-1.png" class="riddle" alt="問題">
             <h2>語群</h2>
-            <img src="imgrei/2-2-2.png" class="riddle" alt="語群">
+            <img src="imgrei/2-2-2-1.png" class="riddle" alt="語群">
             <form id="quizForm2" onsubmit="checkAnswerGeneric(event, 2, 'とりえ')" class="styled-form">
               <input type="text" id="ans2" placeholder="答えを入力" required class="styled-input">
               <input type="submit" value="答える" class="styled-submit">
@@ -50,7 +101,7 @@
           <!-- ✅ 第三問 -->
           <div id="question3">
             <h2>第三問</h2>
-            <img src="imgrei/2-3.png" class="riddle" alt="問題">
+            <img src="imgrei/2-3-1.png" class="riddle" alt="問題">
             <form id="quizForm3" onsubmit="checkAnswerGeneric(event, 3, 'たかん')" class="styled-form">
               <input type="text" id="ans3" placeholder="答えを入力" required class="styled-input">
               <input type="submit" value="答える" class="styled-submit">
@@ -86,7 +137,7 @@
               <img src="imgrei/バナー2.png" alt="次へ進む" class="banner-img">
             </a>
           </div>
-
+       </div>
         </div> <!-- /.inblock -->
       </div> <!-- /.block -->
     </div> <!-- /.main -->

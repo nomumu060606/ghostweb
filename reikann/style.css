@@ -1,75 +1,102 @@
 /* 全体の基本設定 */
-*{
+* {
   padding: 0;
   margin: 0;
   text-align: center;
   font-family: serif;
   font-weight: bold;
+  box-sizing: border-box;
 }
 
-  header {
-    background-color: white; /* ← 背景を白くする！ */
-    color: black;             /* ← 文字の色を黒にする */
-    padding: 20px;            /* ← 内側の余白をつけて見やすくする */
-    text-align: center;       /* ← 文字を中央にそろえる */
-    border-bottom: 2px solid #ccc; /* ← 下にうっすら線を引く（おしゃれ） */
-  }
+/* ヘッダー */
+header {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 2px solid #ccc;
+}
 
-.main{
-  width: auto;
+.main {
+  width: 100%;
   background-color: #68DFE1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* 後ろの基本設定 */
+/* 背景ブロック */
 .block {
-    width: 800px;
-    margin: 50px auto;
-    padding: 50px;
-	background-color: #FFFFFF;
-}
-div {
-    display: block;
-    unicode-bidi: isolate;
+  width: 800px;
+  max-width: 95%;
+  margin: 50px auto;
+  padding: 50px;
+  background-color: #FFFFFF;
 }
 
 .inblock {
-    margin: 50px auto 100px auto;
-	color: #010000;
+  margin: 50px auto 100px auto;
+  color: #010000;
 }
 
-.selectarea{
-  width: 550px;
-  margin: 10px auto;
-  padding: 10px;
-  background-color: lightgray;
-  border-radius: 30px;
-}
-
-.text{
-  margin: auto;
-  font-size: 40px;
-  font-weight: bold;
-}
-
-img.riddle{
-  margin: 0 auto;
+/* 問題画像 */
+img.riddle {
+  display: block;
+  margin: 0 auto 30px auto;
   width: 700px;
+  max-width: 100%;
   border: solid 5px black;
   border-radius: 20px;
 }
 
-img.select{
-  margin: 10px 10px;
-  width: 80px;
+/* 🔹選択肢エリア（横並び維持＋自動縮小） */
+.selectarea {
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: lightgray;
+  border-radius: 30px;
+
+  display: flex;
+  justify-content: center;   /* 中央揃え */
+  align-items: center;
+  gap: 2vw;                  /* 画面に応じて自動間隔 */
+  flex-wrap: nowrap;         /* 折り返し禁止で横並び維持 */
+}
+
+/* 🔸選択肢画像（可変サイズ対応） */
+img.select {
+  width: clamp(50px, 10vw, 100px); /* ← 画面幅に応じて自動縮小 (最小50px〜最大100px) */
+  height: auto;
+  flex-shrink: 0;
   cursor: pointer;
+  transition: transform 0.2s, border 0.2s;
 }
 
-img.selected{
-  margin: 10px 10px;
-  width: 80px;
+img.select:hover {
+  transform: scale(1.05);
 }
 
-.button{
+/* 選択時 */
+img.selected {
+  border: 3px solid #D09B52;
+  border-radius: 8px;
+}
+
+/* メッセージとボタン */
+.form_area {
+  margin-top: 40px;
+}
+
+.message {
+  font-size: 25px;
+  font-weight: bold;
+  color: #010000;
+  margin-bottom: 20px;
+}
+
+.button {
   width: 250px;
   height: 70px;
   font-size: 45px;
@@ -77,134 +104,22 @@ img.selected{
   cursor: pointer;
 }
 
-.message{
-  font-size: 25px;
-  font-weight: bold;
-  color: #010000;
-}
-
-.tweetArea{
-  margin: 30px;
-}
-
-form{
-  border:2px solid #D09B52;
-}
-#focus{
-  border:3px solid #fef6fb;
-  box-shadow:0 0 10px 0 #D09B52;
-  position:absolute;
-  transition:
-    width .2s ease, 
-    height .2s ease, 
-    left .2s ease, 
-    top .2s ease, 
-    border-radius .2s ease;
-  pointer-events:none;
-  z-index:5;
-  border-radius:10px;
-  display:none;
-}
-
-
-
-
-
-/* ヘッダー */
-header {
-  text-align: center;
-  background-color: #FCFCFC;
-  color: black;
-  padding: 10px 20px;
-}
-
-header h1 {
-  margin-bottom: 0px;
-}
-
-/* コンテンツ全体 */
-.content {
-  max-width: 900px;    /* 横幅を少し狭めて中央に配置 */
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-/* 各セクション（画像＋テキスト） */
-.item {
-  text-align: center;
-  background-color: #fff;
-  padding: 30px;
-  margin-bottom: 40px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-/* 画像 */
-.item img {
-  width: 100%;         /* 画面幅に合わせて自動で縮小 */
-  height: auto;
-  max-width: 1280px;   /* 元のサイズより大きくならないように制限 */
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-/* 見出しと文章 */
-.item h2 {
-  color: #010000;
-  margin-bottom: 10px;
-}
-
-.item p {
-  line-height: 1.8;
-  font-size: 30px;
-}
-/* 謎解きマッチング説明 */
+/* 強調文字 */
 .kuroshiro {
-background-color: black; /* 背景色を黄色に設定 */
-color: white; /* 文字色を黒に設定 */
-padding: 0px; /* 余白を追加 */
+  background-color: black;
+  color: white;
+  padding: 2px 6px;
 }
 
-/* 選択肢画像の横並び */
-.choices {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 20px;
-  flex-wrap: wrap; /* 小さい画面では折り返す */
-}
-
-.choice {
-  flex: 1 1 5%;      /* 最小幅18%で5枚並べる */
-  max-width: 150px;   /* 画像の最大幅を制限 */
-  aspect-ratio: 1/1;  /* 正方形を維持 */
-  cursor: pointer;
-  border: 2px solid transparent;
-  border-radius: 5px;
-  transition: transform 0.2s, border-color 0.2s;
-}
-
-.choice:hover {
-  transform: scale(1.05);
-  border-color: #4a90e2;
-}
-
-/* スマホ対応 */
-@media (max-width : 810px ){
-  .choices {
-    overflow-x: auto;      /* 横スクロール */
+/* スマホ対応（補助的調整） */
+@media (max-width: 600px) {
+  .block {
+    padding: 30px 20px;
   }
-  .choice {
-    flex: 0 0 120px;       /* 固定幅にしてスクロール可能 */
-    max-width: none;       /* スマホでは最大幅制限を外す */
+  .selectarea {
+    gap: 3vw;
   }
-}
-
-
-/* フッター */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #eee;
-  color: #666;
+  img.select {
+    width: clamp(40px, 13vw, 80px);
+  }
 }

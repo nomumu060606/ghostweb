@@ -219,7 +219,73 @@ footer {
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
+.banner-img3 {
+  width: 100px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 
 .becouse {
 	color: #FFFFFF;
+}
+/* ==== 次へのバナー ==== */
+.next-banner {
+  text-align: center;
+  margin-top: 60px;
+  opacity: 0;
+  transition: opacity 1s ease, transform 0.5s ease;
+  transform: translateY(30px);
+}
+
+.next-banner.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.banner-img3 {
+  width: 100px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.banner-img3:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+/* ==== 横並びで配置するバナーグループ ==== */
+.next-banner-group {
+  display: flex;
+  justify-content: center;  /* 中央揃え */
+  align-items: center;
+  gap: 80px;                /* バナーの間隔 */
+  margin-top: 60px;
+  flex-wrap: wrap;          /* 画面が狭いときは折り返す */
+}
+
+/* 各バナー共通設定 */
+.next-banner {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.3s ease;
+}
+
+/* バナー画像スタイル */
+.banner-img3 {
+  width: 130px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease;
+}
+
+/* ホバー時の拡大アニメーション */
+.banner-img3:hover {
+  transform: scale(1.1);
+}
+
+/* スマホ対応（狭い画面では縦並び） */
+@media (max-width: 600px) {
+  .next-banner-group {
+    flex-direction: column;
+    gap: 25px;
+  }
 }

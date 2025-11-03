@@ -318,3 +318,45 @@ footer {
   display: block; /* ←これを追加するのがポイント！ */
   opacity: 1;
 }
+
+@media (max-width: 700px) {
+  img.riddle {
+    width: 95%;
+    border-width: 3px;
+  }
+  .styled-input {
+    width: 80%;
+  }
+  .banner-img {
+    width: 90%;
+  }
+}
+
+.profile-setup {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.profile-setup h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.profile-setup label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.saved-message {
+  color: green;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+

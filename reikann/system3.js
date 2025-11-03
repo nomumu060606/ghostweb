@@ -73,3 +73,22 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
     message.classList.add("result-wrong");
   }
 }
+
+window.addEventListener("DOMContentLoaded", function () {
+  // URLパラメータを取得
+  const params = new URLSearchParams(window.location.search);
+  const isRetry = params.get("retry");
+
+  // retryパラメータがtrueならメッセージ表示
+  if (isRetry === "2") {
+    const numMessage = document.getElementById("numMessage");
+    if (numMessage) {
+      numMessage.textContent = "（二度目だ。頑張ろう。）";
+    }
+  }if else (isRetry === "3") {
+    const numMessage = document.getElementById("numMessage");
+    if (numMessage) {
+      numMessage.textContent = "（三度目だ。このままでは、、。）";
+    }
+  }
+});

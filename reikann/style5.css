@@ -240,8 +240,8 @@ footer {
 
 /* フォーカス時（アニメーションで色変化） */
 .styled-input:focus {
-  border-bottom: 2px solid #4a90e2;
-  box-shadow: 0 2px 0 0 #4a90e2;
+  border-bottom: 2px solid #010000;
+  box-shadow: 0 2px 0 0 #010000;
 }
 
 /* 送信ボタン */
@@ -249,7 +249,7 @@ footer {
   padding: 10px 30px;
   font-size: 18px;
   color: #fff;
-  background-color: #68DFE1;
+  background-color: #3F3F3F;
   border: none;
   border-radius: 25px;
   cursor: pointer;
@@ -257,7 +257,7 @@ footer {
 }
 
 .styled-submit:hover {
-  background-color: #00BBFF;
+  background-color: #010000;
   transform: translateY(-2px);
 }
 
@@ -317,4 +317,134 @@ footer {
 .show {
   display: block; /* ←これを追加するのがポイント！ */
   opacity: 1;
+}
+
+.profile-setup {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.profile-setup h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.profile-setup label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.saved-message {
+  color: black;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* 画像と文字を重ねるためのベース */
+.question-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* 年齢の数字スタイル（共通） */
+.age-digit {
+  position: absolute;
+  color: red;
+  font-size: 1.5em;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+/* 🔹1桁目と2桁目の位置（調整OK） */
+#overlayDigit1 {
+  top: 24.5%;   /* 縦位置 */
+  left: 65%;  /* 横位置 */
+}
+
+#overlayDigit2 {
+  top: 60.5%;
+  left: 44%;
+}
+
+
+
+/* ベース画像の枠 */
+.name-overlay-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 90%;        /* 画面に応じて縮小する */
+  max-width: 700px;  /* PC時の最大幅 */
+}
+
+/* 画像本体 */
+.name-overlay-wrapper img {
+  width: 100%;       /* 親要素にフィット */
+  height: auto;
+  display: block;
+}
+
+/* 名前の文字（位置は%指定） */
+.name-overlay {
+  position: absolute;
+  top: 21.0%;          /* 縦の位置 → 画像の高さに対する割合 */
+  left: 15.5%;         /* 横の位置 → 画像の幅に対する割合 */
+  color: red;
+  font-family: "BIZ UD明朝 Medium", "BIZ UDMincho Medium", serif;
+  font-size: 1.5em;  /* ✅ 画面幅に比例して文字サイズを変化 */
+  font-weight: 500;
+  text-align: left;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+
+
+/* 画像と文字の重ね合わせベース */
+.question-image-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 90%;
+  max-width: 700px;
+}
+
+/* 画像本体 */
+.question-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 嫌いな食べ物の文字（共通設定） */
+.food-char {
+  position: absolute;
+  color: red;
+  font-family: "BIZ UD明朝 Medium", "BIZ UDMincho Medium", serif;
+  font-size: 1em;   /* 画面幅に比例して拡縮 */
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* ✅1文字目と2文字目の位置（画像比率で指定） */
+#overlayFood1 {
+  top: 24%;   /* ← 画像の高さに対しての割合 */
+  left: 15%;  /* ← 画像の幅に対しての割合 */
+}
+
+#overlayFood2 {
+  top: 30%;   /* ← 画像の高さに対しての割合 */
+  left: 50%;  /* ← 画像の幅に対しての割合 */
+}
+
+/* スマホでも文字が小さくなりすぎないよう調整 */
+@media (max-width: 600px) {
+  .food-char {
+    font-size: 18px;
+  }
 }
