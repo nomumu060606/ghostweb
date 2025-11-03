@@ -1,0 +1,320 @@
+/* 全体の基本設定 */
+*{
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-family: serif;
+  font-weight: bold;
+}
+
+  header {
+    background-color: white; /* ← 背景を白くする！ */
+    color: black;             /* ← 文字の色を黒にする */
+    padding: 20px;            /* ← 内側の余白をつけて見やすくする */
+    text-align: center;       /* ← 文字を中央にそろえる */
+    border-bottom: 2px solid #ccc; /* ← 下にうっすら線を引く（おしゃれ） */
+  }
+
+.main{
+  width: auto;
+  background-color: #010000;
+}
+
+/* 後ろの基本設定 */
+.block {
+    width: 800px;
+    margin: 30px auto;
+    padding: 50px;
+	background-color: #FFFFFF;
+}
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.inblock {
+    margin: 50px auto 100px auto;
+	color: #010000;
+}
+
+.selectarea{
+  width: 550px;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: lightgray;
+  border-radius: 30px;
+}
+
+.text{
+  margin: auto;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+img.riddle{
+  margin: 0 auto;
+  width: 700px;
+  border: solid 5px black;
+  border-radius: 20px;
+}
+
+img.select{
+  margin: 10px 10px;
+  width: 80px;
+  cursor: pointer;
+}
+
+img.selected{
+  margin: 10px 10px;
+  width: 80px;
+}
+
+.button{
+  width: 250px;
+  height: 70px;
+  font-size: 45px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.message{
+  font-size: 25px;
+  font-weight: bold;
+  color: #010000;
+}
+
+.tweetArea{
+  margin: 30px;
+}
+
+form{
+  ;
+}
+#focus{
+  border:3px solid #fef6fb;
+  box-shadow:0 0 10px 0 #D09B52;
+  position:absolute;
+  transition:
+    width .2s ease, 
+    height .2s ease, 
+    left .2s ease, 
+    top .2s ease, 
+    border-radius .2s ease;
+  pointer-events:none;
+  z-index:5;
+  border-radius:10px;
+  display:none;
+}
+
+
+
+
+
+/* ヘッダー */
+header {
+  text-align: center;
+  background-color: #FCFCFC;
+  color: black;
+  padding: 10px 20px;
+}
+
+header h1 {
+  margin-bottom: 0px;
+}
+
+/* コンテンツ全体 */
+.content {
+  max-width: 900px;    /* 横幅を少し狭めて中央に配置 */
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* 各セクション（画像＋テキスト） */
+.item {
+  text-align: center;
+  background-color: #fff;
+  padding: 30px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* 画像 */
+.item img {
+  width: 100%;         /* 画面幅に合わせて自動で縮小 */
+  height: auto;
+  max-width: 1280px;   /* 元のサイズより大きくならないように制限 */
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* 見出しと文章 */
+.item h2 {
+  color: #010000;
+  margin-bottom: 10px;
+}
+
+.item p {
+  line-height: 1.8;
+  font-size: 30px;
+}
+/* 謎解きマッチング説明 */
+.kuroshiro {
+background-color: black; /* 背景色を黄色に設定 */
+color: white; /* 文字色を黒に設定 */
+padding: 0px; /* 余白を追加 */
+}
+
+/* 選択肢画像の横並び */
+.choices {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap; /* 小さい画面では折り返す */
+}
+
+.choice {
+  flex: 1 1 5%;      /* 最小幅18%で5枚並べる */
+  max-width: 150px;   /* 画像の最大幅を制限 */
+  aspect-ratio: 1/1;  /* 正方形を維持 */
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.choice:hover {
+  transform: scale(1.05);
+  border-color: #4a90e2;
+}
+
+/* スマホ対応 */
+@media (max-width : 810px ){
+  .choices {
+    overflow-x: auto;      /* 横スクロール */
+  }
+  .choice {
+    flex: 0 0 120px;       /* 固定幅にしてスクロール可能 */
+    max-width: none;       /* スマホでは最大幅制限を外す */
+  }
+}
+
+
+/* フッター */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #eee;
+  color: #666;
+}
+
+✅ 追加CSS（style2.cssの末尾に貼る）
+/* ==== 入力フォームをスタイリッシュに ==== */
+.styled-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 40px auto;
+  max-width: 400px;
+}
+
+/* 入力欄（下線のみ） */
+.styled-input {
+  width: 40%;
+  padding: 10px 5px;
+  font-size: 18px;
+  border: none;
+  border-bottom: 2px solid #999;
+  background-color: transparent;
+  color: #000;
+  text-align: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
+}
+
+.styled-input::placeholder {
+  color: #aaa;
+}
+
+/* フォーカス時（アニメーションで色変化） */
+.styled-input:focus {
+  border-bottom: 2px solid #4a90e2;
+  box-shadow: 0 2px 0 0 #4a90e2;
+}
+
+/* 送信ボタン */
+.styled-submit {
+  padding: 10px 30px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #68DFE1;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.styled-submit:hover {
+  background-color: #00BBFF;
+  transform: translateY(-2px);
+}
+
+.styled-submit:active {
+  transform: translateY(0);
+}
+#resultMessage {
+  font-size: 22px;
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+
+.result-message {
+  font-size: 28px;       /* 大きく見やすく */
+  font-weight: bold;     /* 太字で強調 */
+  margin-top: 15px;      /* 入力欄との間に余白 */
+  transition: all 0.3s ease; /* フェードなどの効果に滑らかさ */
+}
+
+/* ==== 次へのバナー ==== */
+.next-banner {
+  text-align: center;
+  margin-top: 60px;
+  opacity: 0;
+  transition: opacity 1s ease, transform 0.5s ease;
+  transform: translateY(30px);
+}
+
+.next-banner.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.banner-img {
+  width: 400px;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.banner-img:hover {
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+/* 表示時にふわっと出る */
+.show {
+  display: block; /* ←これを追加するのがポイント！ */
+  opacity: 1;
+}
