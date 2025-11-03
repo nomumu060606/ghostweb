@@ -7,13 +7,6 @@
   font-weight: bold;
 }
 
-  header {
-    background-color: white; /* ← 背景を白くする！ */
-    color: black;             /* ← 文字の色を黒にする */
-    padding: 20px;            /* ← 内側の余白をつけて見やすくする */
-    text-align: center;       /* ← 文字を中央にそろえる */
-    border-bottom: 2px solid #ccc; /* ← 下にうっすら線を引く（おしゃれ） */
-  }
 
 .main{
   width: auto;
@@ -23,7 +16,7 @@
 /* 後ろの基本設定 */
 .block {
     width: 800px;
-    margin: 30px auto;
+    margin: auto;
     padding: 50px;
 	background-color: #FFFFFF;
 }
@@ -33,7 +26,7 @@ div {
 }
 
 .inblock {
-    margin: 50px auto 100px auto;
+    margin: auto;
 	color: #010000;
 }
 
@@ -369,4 +362,25 @@ footer {
   text-align: center;
   font-size: 14px;
   margin-top: 10px;
+}
+
+/* ==== iPhoneでの自動ズーム防止設定 ==== */
+input,
+select,
+textarea {
+  font-size: 16px !important;  /* ←16px以上でズーム防止 */
+  -webkit-text-size-adjust: 100%;
+}
+
+html, body {
+  font-size: 18px; /* ←全体をやや大きく */
+}
+
+label, p, h2 {
+  font-size: 1.1em; /* ←バランス調整 */
+}
+
+.styled-input {
+  font-size: 18px !important; /* ←入力欄の文字も見やすく */
+  padding: 12px 8px;
 }

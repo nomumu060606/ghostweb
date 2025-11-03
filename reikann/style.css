@@ -104,22 +104,10 @@ img.selected {
   cursor: pointer;
 }
 
-/* 強調文字 */
-.kuroshiro {
-  background-color: black;
-  color: white;
-  padding: 2px 6px;
-}
 
 /* スマホ対応（補助的調整） */
 @media (max-width: 600px) {
   .block {
     padding: 30px 20px;
-  }
-  .selectarea {
-    gap: 3vw;
-  }
-  img.select {
-    width: clamp(40px, 13vw, 80px);
   }
 }
