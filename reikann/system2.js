@@ -91,6 +91,9 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
 // === ページ読み込み時 ===
 window.addEventListener("DOMContentLoaded", function () {
+  // ✅ ページ読み込み時にプロフィール情報をリセット
+  localStorage.removeItem("userProfile");
+
   var params = new URLSearchParams(window.location.search);
   var retry = params.get("retry");
   var quizSection = document.getElementById("quizSection");
@@ -108,7 +111,6 @@ window.addEventListener("DOMContentLoaded", function () {
       quizSection.classList.remove("hidden");
       quizSection.classList.add("show");
 
-      // ✅ 保存済みなら5問すべて表示
       for (var i = 1; i <= 5; i++) {
         var q = document.getElementById("question" + i);
         if (q) {
@@ -126,3 +128,5 @@ window.addEventListener("DOMContentLoaded", function () {
     numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
   }
 });
+
+
