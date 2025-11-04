@@ -87,30 +87,30 @@ window.addEventListener("DOMContentLoaded", function () {
     var key = resultData.key || "";
     var answers = resultData.answers || [];
 
-    // --- 表示するメッセージを決定 ---
-    var msg = "";
-    if (key === "41") {
-      msg = "あなたはとても慎重な人間のようですね。";
-    } else if (key === "43") {
-      msg = "あなたはとても屈強な人間のようですね。";
-    } else if (key === "44") {
-      msg = "あなたはとても信仰深い人間のようですね。";
-    } else if (key === "45") {
-      msg = "あなたは恐れ知らずな人間のようですね。";
-    } else if (key === "52") {
-      msg = "ようこそ霊のあなたをサポートいたします。";
-    }
+    // --- 表示する画像を決定 ---
+var imgSrc = "";
+if (key === "41") {
+  imgSrc = "imgrei/診断1.png";
+} else if (key === "43") {
+  imgSrc = "imgrei/診断3.png";
+} else if (key === "44") {
+  imgSrc = "imgrei/診断4.png";
+} else if (key === "45") {
+  imgSrc = "imgrei/診断5.png";
+} else if (key === "52") {
+  imgSrc = "imgrei/診断2.png";
+}
 
-    // --- メッセージを表示 ---
-    if (msg !== "") {
-      var memoryDiv = document.getElementById("memoryMessage");
-      if (memoryDiv) {
-        memoryDiv.textContent = msg;
-        setTimeout(function () {
-          memoryDiv.classList.add("show");
-        }, 100);
-      }
-    }
+// --- 画像を表示 ---
+if (imgSrc !== "") {
+  var memoryDiv = document.getElementById("memoryMessage");
+  if (memoryDiv) {
+    memoryDiv.innerHTML = '<img src="' + imgSrc + '" alt="前回の結果" class="memory-image">';
+    setTimeout(function() {
+      memoryDiv.classList.add("show");
+    }, 100);
+  }
+}
 
   } catch (e) {
     console.error("データの解析に失敗:", e);
