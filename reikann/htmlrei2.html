@@ -7,6 +7,48 @@
   <link rel="stylesheet" href="style2.css">
   <script type="text/javascript" src="system2.js" defer></script>
 </head>
+	<script>
+// === URLパラメータからデータを取得 ===
+window.addEventListener("DOMContentLoaded", function() {
+  const params = new URLSearchParams(window.location.search);
+  const dataParam = params.get("data");
+  if (!dataParam) return; // データがない場合は終了
+
+  try {
+    const decoded = decodeURIComponent(dataParam);
+    const resultData = JSON.parse(decoded);
+    const key = resultData.key || "";
+
+    // === keyごとに画像を指定 ===
+    let imgSrc = "";
+    if (key === "41") imgSrc = "imgrei/診断1.png";
+    else if (key === "43") imgSrc = "imgrei/診断3.png";
+    else if (key === "44") imgSrc = "imgrei/診断4.png";
+    else if (key === "45") imgSrc = "imgrei/診断5.png";
+    else if (key === "52") imgSrc = "imgrei/診断2.png";
+
+    if (!imgSrc) return;
+
+    // === 表示処理 ===
+    const memoryDiv = document.getElementById("memoryMessage");
+    if (memoryDiv) {
+      const img = document.createElement("img");
+      img.src = imgSrc;
+      img.alt = "前回の診断結果";
+      img.className = "memory-image";
+
+      // スタイル（例：中央寄せ＆余白）を調整したい場合
+      img.style.display = "block";
+      img.style.margin = "20px auto";
+      img.style.maxWidth = "80%";
+
+      memoryDiv.appendChild(img);
+    }
+  } catch (e) {
+    console.error("診断データの解析に失敗:", e);
+  }
+});
+</script>
 <body>
 
 
