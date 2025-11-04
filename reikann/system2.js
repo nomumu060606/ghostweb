@@ -106,6 +106,19 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
 // === ページ読み込み時 ===
 window.addEventListener("DOMContentLoaded", function () {
+	// ✅ プロフィールを localStorage から復元
+  var savedProfile = localStorage.getItem("userProfile");
+  if (savedProfile) {
+    try {
+      var profile = JSON.parse(savedProfile);
+      if (profile.name) document.getElementById("profileName").value = profile.name;
+      if (profile.age) document.getElementById("profileAge").value = profile.age;
+      if (profile.food) document.getElementById("profileFood").value = profile.food;
+      console.log("プロフィールを復元しました:", profile);
+    } catch (e) {
+      console.error("プロフィールの復元に失敗:", e);
+    }
+  }
   console.log("Loaded revised system2.js with alt answers");
 
   var params = new URLSearchParams(window.location.search);
@@ -169,4 +182,5 @@ window.addEventListener("DOMContentLoaded", function () {
     console.error("データの解析に失敗:", e);
   }
 });
+
 
