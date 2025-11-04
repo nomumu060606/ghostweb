@@ -429,11 +429,7 @@ body {
   .profile-setup {
     transform: scale(0.9);
   }
-	.main {
-    transform: scale(0.9);
-    transform-origin: top center;
-		
-}
+
 	.block {
     padding: 30px 20px;
   }
@@ -444,10 +440,7 @@ body {
   .profile-setup {
     transform: scale(0.8);
   }
-	.main {
-    transform: scale(0.8);
-    transform-origin: top center;
-}
+
 }
 
 /* 小さいスマホ（400px以下）で大幅に縮小 */
@@ -455,8 +448,5 @@ body {
   .profile-setup {
     transform: scale(0.7);
   }
-	.main {
-    transform: scale(0.7);
-    transform-origin: top center;
-}
+
 	}
