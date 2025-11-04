@@ -24,24 +24,19 @@ function saveProfile(event) {
     message.textContent = "";
   }, 3000);
 
-  // ✅ クイズエリアを表示
+  // ✅ クイズエリアを表示（5問すべて）
   var quizSection = document.getElementById("quizSection");
   quizSection.classList.remove("hidden");
   quizSection.classList.add("show");
 
-  // ✅ 全問を表示（hiddenを外す）
   for (var i = 1; i <= 5; i++) {
     var q = document.getElementById("question" + i);
-    if (q) {
-      q.classList.remove("hidden");
-      q.classList.add("show");
-    }
+    if (q) q.classList.remove("hidden");
   }
 }
 
 var correctAnswers = [false, false, false, false, false];
 
-// === 答えチェック ===
 // === 答えチェック ===
 function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   if (event && event.preventDefault) event.preventDefault();
@@ -51,7 +46,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   var params = new URLSearchParams(window.location.search);
   var retry = params.get("retry");
 
-  // ✅ retry=2 の時は正解セットを上書き
+  // ✅ retry=2 の時の答えセット
   if (retry === "2") {
     var retryAnswers = ["しあい", "とりえ", "たかん", "ことば", "ありがとう"];
     correctAnswer = retryAnswers[questionNumber - 1];
@@ -63,20 +58,10 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
     message.textContent = "（よし、なんだか合っていそう）";
     message.classList.add("result-correct");
     correctAnswers[questionNumber - 1] = true;
-
     document.getElementById("ans" + questionNumber).disabled = true;
 
     // ✅ 全問正解チェック
-    var allCorrect = true;
-    for (var i = 0; i < correctAnswers.length; i++) {
-      if (!correctAnswers[i]) {
-        allCorrect = false;
-        break;
-      }
-    }
-
-    if (allCorrect) {
-      // ✅ result1/result2 へのリンク先を設定してバナー表示
+    if (correctAnswers.every(Boolean)) {
       var nextBanner = document.getElementById("nextBanner");
       var nextImg = nextBanner.querySelector("img");
 
@@ -88,7 +73,6 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
       nextBanner.style.display = "block";
       nextBanner.classList.add("show");
-
       message.textContent = "（……どうやら、全て正しく解けたようだ）";
     }
   } else {
@@ -97,16 +81,19 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   }
 }
 
-
 // === ページ読み込み時 ===
 window.addEventListener("DOMContentLoaded", function () {
-  // ✅ ページ読み込み時にプロフィール情報をリセット
-  localStorage.removeItem("userProfile");
-
   var params = new URLSearchParams(window.location.search);
   var retry = params.get("retry");
-  var quizSection = document.getElementById("quizSection");
+
+  // ✅ 「前ページから来た」場合だけプロフリセット
+  // referrer（直前のページURL）を使う
+  if (document.referrer && document.referrer.includes("result")) {
+    localStorage.removeItem("userProfile");
+  }
+
   var profile = localStorage.getItem("userProfile");
+  var quizSection = document.getElementById("quizSection");
 
   if (!profile) {
     quizSection.classList.add("hidden");
@@ -118,23 +105,20 @@ window.addEventListener("DOMContentLoaded", function () {
       document.getElementById("profileFood").value = data.food || "";
 
       quizSection.classList.remove("hidden");
-      quizSection.classList.add("show");
-
       for (var i = 1; i <= 5; i++) {
         var q = document.getElementById("question" + i);
-        if (q) {
-          q.classList.remove("hidden");
-          q.classList.add("show");
-        }
+        if (q) q.classList.remove("hidden");
       }
     } catch (e) {
       console.error("プロファイル読み込みエラー:", e);
     }
   }
 
+  // ✅ retry=2メッセージ
   var numMessage = document.getElementById("numMessage");
   if (numMessage && retry === "2") {
     numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
   }
 });
+
 
