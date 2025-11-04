@@ -6,10 +6,34 @@
   <title>霊感テスト｜謎解きマッチング</title>
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="system.js" defer></script>
+
+  <script>
+  // ✅ 送信時の遷移処理
+  function check() {
+    // ここに既存の「全問正解判定など」がある前提
+    // そのまま最後に遷移だけ追加すればOK
+
+    var ref = document.referrer;
+    var params = new URLSearchParams(window.location.search);
+    var retry = params.get("retry");
+    var keepRetry = false;
+
+    // ✅ result1 または result2 から来ていて retry=2 の場合は保持
+    if ((ref.includes("result1.html") || ref.includes("result2.html")) && retry === "2") {
+      keepRetry = true;
+    }
+
+    // ✅ 正常に送信されたときに遷移
+    // ここを全問正解時などに限定したい場合は条件を加えてください
+    if (keepRetry) {
+      window.location.href = "htmlrei2.html?retry=2";
+    } else {
+      window.location.href = "htmlrei2.html";
+    }
+  }
+  </script>
 </head>
 <body>
-
-
   <main>
     <div class="main">
       <div class="block">
@@ -21,18 +45,15 @@
             <h4>ハッピーマッチは<span class="kuroshiro">一定の謎解き力</span>がある方のみご利用できるマッチングサービスです。</h4><br>
             <h4>今からあなたには謎を解いていただき、当アプリを利用する<span class="kuroshiro">資格</span>があるか、また、あなたが<span class="kuroshiro">どういう者か</span>を診断いたします。</h4><br>
             <h4>その診断結果に基づき<span class="kuroshiro">運命候補</span>を選出いたします。</h4><br><br><br><br>
-			  <h4>それでは診断テストを開始いたします。</h4><br><br>
-         
+            <h4>それでは診断テストを開始いたします。</h4><br><br>
           </div>
 
           <!-- 第一問 -->
           <section class="question">
             <h2>第一問</h2>
             <img src="imgrei/1-2.png" class="riddle" alt="第一問の画像">
-			  <h2>選択肢</h2>
+            <h2>選択肢</h2>
             <div class="selectarea">
-				
-              <div class="text"></div>
               <span id="1_1"><img src="select/1_1.png" class="select" alt="選択肢1" onclick="select(1,'1')"></span>
               <span id="1_2"><img src="select/1_2.png" class="select" alt="選択肢2" onclick="select(1,'2')"></span>
               <span id="1_3"><img src="select/1_3.png" class="select" alt="選択肢3" onclick="select(1,'3')"></span>
@@ -41,16 +62,13 @@
             </div>
           </section>
 
-          <!-- 第二問 --><br><br><br><br>
-			<h2>第二問</h2>
+          <!-- 第二問 -->
+          <br><br><br><br>
+          <h2>第二問</h2>
           <section class="question">
-            
             <img src="imgrei/1-２.png" class="riddle" alt="第二問の画像">
-			  <h2>選択肢</h2>
+            <h2>選択肢</h2>
             <div class="selectarea">
-				
-				
-       
               <span id="2_1"><img src="select/2_1.png" class="select" alt="選択肢1" onclick="select(2,'1')"></span>
               <span id="2_2"><img src="select/2_2.png" class="select" alt="選択肢2" onclick="select(2,'2')"></span>
               <span id="2_3"><img src="select/2_3.png" class="select" alt="選択肢3" onclick="select(2,'3')"></span>
@@ -62,6 +80,7 @@
           <!-- 送信ボタン -->
           <div class="form_area">
             <div class="message" id="message">ボタンを押して回答を送信してください。</div>
+            <!-- ✅ onclick は上の check() を呼び出す -->
             <input type="button" class="button" id="button" value="送信" onclick="check()">
           </div>
 
@@ -69,6 +88,5 @@
       </div><!-- /.block -->
     </div><!-- /.main -->
   </main>
-
 </body>
 </html>
