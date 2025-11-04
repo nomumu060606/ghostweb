@@ -71,6 +71,11 @@ img.riddle{
   color: #010000;
 }
 
+.memory-image {
+  max-width: 90%;
+  height: auto;
+}
+
 .tweetArea{
   margin: 30px;
 }
