@@ -300,7 +300,7 @@ footer {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
   opacity: 0;
   transition: opacity 0.8s ease;
 }
@@ -453,3 +453,4 @@ body {
     width: 90%;
   }
 }
+
