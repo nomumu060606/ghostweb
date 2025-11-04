@@ -9,21 +9,34 @@
 }
 
 
+html, body {
+  overflow-x: hidden;
+  background-color: #68DFE1; /* ← ページ全体の背景も青に */
+}
+
 .main {
   width: 100%;
   background-color: #68DFE1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform: scale(0.9); /* ← こちらに移動 */
+  transform-origin: top center;
 }
+
+.kuroshiro {
+  color: white;              /* 文字を白に */
+  background-color: black;   /* 背景を黒に */         
+}
+
 /* 📱 画面幅に応じて文字を自動縮小する設定 */
 .intro {
-  font-size: clamp(8px, 2vw, 32px);
+  font-size: clamp(12px, 2vw, 20px);
   line-height: 1.4;
 }
 
 h2 {
-  font-size: clamp(12px, 2vw, 32px);
+  font-size: clamp(12px, 2vw, 20px);
   line-height: 1.4;
 }
 
@@ -31,45 +44,52 @@ h2 {
 .block {
   width: 800px;
   max-width: 95%;
-  margin: 50px auto;
+  margin: 30px auto 30px;
   padding: 50px;
   background-color: #FFFFFF;
 }
-
+/* 白背景の中の全部のコンテンツ */
 .inblock {
-  margin: 50px auto 100px auto;
+  margin: 40px auto 20px auto;
   color: #010000;
 }
 
 /* 問題画像 */
 img.riddle {
   display: block;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 10px auto;
   width: 700px;
   max-width: 100%;
   border: solid 5px black;
   border-radius: 20px;
 }
 
+img.this {
+  display: block;
+  margin: auto;
+  width: 700px;
+  max-width: 100%;
+}
+
 /* 🔹選択肢エリア（横並び維持＋自動縮小） */
 .selectarea {
   width: 100%;
   max-width: 700px;
-  margin: 20px auto;
+  margin: 0 auto; /* ✅ 上下0、左右中央寄せ */
   padding: 15px;
   background-color: lightgray;
   border-radius: 30px;
 
   display: flex;
-  justify-content: center;   /* 中央揃え */
+  justify-content: center;  /* 中央揃え */
   align-items: center;
-  gap: 2vw;                  /* 画面に応じて自動間隔 */
-  flex-wrap: nowrap;         /* 折り返し禁止で横並び維持 */
+  gap: 2vw;                 /* 画面に応じて自動間隔 */
+  flex-wrap: nowrap;        /* 折り返し禁止で横並び維持 */
 }
 
 /* 🔸選択肢画像（可変サイズ対応） */
 img.select {
-  width: clamp(20px, 10vw, 100px); /* ← 画面幅に応じて自動縮小 (最小50px〜最大100px) */
+  width: clamp(20px, 10vw, 80px); /* ← 画面幅に応じて自動縮小 (最小50px〜最大100px) */
   height: auto;
   flex-shrink: 0;
   cursor: pointer;
@@ -82,7 +102,7 @@ img.select:hover {
 
 /* 選択時 */
 img.selected {
-  width: clamp(50px, 10vw, 100px); /* ← 画面幅に応じて自動縮小 (最小50px〜最大100px) */
+  width: clamp(20px, 10vw, 100px); /* ← 画面幅に応じて自動縮小 (最小50px〜最大100px) */
   height: auto;
   flex-shrink: 0;
   cursor: pointer;
@@ -123,10 +143,4 @@ img.selected {
     height: 50px;
 	font-size: clamp(14px, 4vw, 22px); /* ← スマホではさらに小さく調整 */
   }
-}
-
-html, body {
-  overflow-x: hidden;
-  transform: scale(0.9);
-  transform-origin: top center;
 }
