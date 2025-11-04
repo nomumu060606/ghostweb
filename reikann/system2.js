@@ -42,6 +42,7 @@ function saveProfile(event) {
 var correctAnswers = [false, false, false, false, false];
 
 // === 答えチェック ===
+// === 答えチェック ===
 function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   if (event && event.preventDefault) event.preventDefault();
 
@@ -52,7 +53,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
   // ✅ retry=2 の時は正解セットを上書き
   if (retry === "2") {
-    var retryAnswers = ["いあい", "とりこ", "たから", "ことし", "ありがとう"];
+    var retryAnswers = ["しあい", "とりえ", "たかん", "ことば", "ありがとう"];
     correctAnswer = retryAnswers[questionNumber - 1];
   }
 
@@ -65,7 +66,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
     document.getElementById("ans" + questionNumber).disabled = true;
 
-    // 全問正解チェック
+    // ✅ 全問正解チェック
     var allCorrect = true;
     for (var i = 0; i < correctAnswers.length; i++) {
       if (!correctAnswers[i]) {
@@ -75,19 +76,27 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
     }
 
     if (allCorrect) {
-      setTimeout(function () {
-        if (retry === "2") {
-          window.location.href = "result2.html";
-        } else {
-          window.location.href = "result1.html";
-        }
-      }, 1200);
+      // ✅ result1/result2 へのリンク先を設定してバナー表示
+      var nextBanner = document.getElementById("nextBanner");
+      var nextImg = nextBanner.querySelector("img");
+
+      if (retry === "2") {
+        nextImg.setAttribute("onclick", "window.location.href='result2.html'");
+      } else {
+        nextImg.setAttribute("onclick", "window.location.href='result1.html'");
+      }
+
+      nextBanner.style.display = "block";
+      nextBanner.classList.add("show");
+
+      message.textContent = "（……どうやら、全て正しく解けたようだ）";
     }
   } else {
     message.textContent = "（何か違うような気がする）";
     message.classList.add("result-wrong");
   }
 }
+
 
 // === ページ読み込み時 ===
 window.addEventListener("DOMContentLoaded", function () {
@@ -128,5 +137,4 @@ window.addEventListener("DOMContentLoaded", function () {
     numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
   }
 });
-
 
