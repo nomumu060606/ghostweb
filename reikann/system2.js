@@ -24,10 +24,19 @@ function saveProfile(event) {
     message.textContent = "";
   }, 3000);
 
-  // クイズを表示
+  // ✅ クイズエリアを表示
   var quizSection = document.getElementById("quizSection");
   quizSection.classList.remove("hidden");
   quizSection.classList.add("show");
+
+  // ✅ 全問を表示（hiddenを外す）
+  for (var i = 1; i <= 5; i++) {
+    var q = document.getElementById("question" + i);
+    if (q) {
+      q.classList.remove("hidden");
+      q.classList.add("show");
+    }
+  }
 }
 
 var correctAnswers = [false, false, false, false, false];
@@ -88,23 +97,30 @@ window.addEventListener("DOMContentLoaded", function () {
   var profile = localStorage.getItem("userProfile");
 
   if (!profile) {
-    // プロフィール未保存 → クイズを隠す
     quizSection.classList.add("hidden");
   } else {
-    // 保存済 → 値復元
     try {
       var data = JSON.parse(profile);
       document.getElementById("profileName").value = data.name || "";
       document.getElementById("profileAge").value = data.age || "";
       document.getElementById("profileFood").value = data.food || "";
+
       quizSection.classList.remove("hidden");
       quizSection.classList.add("show");
+
+      // ✅ 保存済みなら5問すべて表示
+      for (var i = 1; i <= 5; i++) {
+        var q = document.getElementById("question" + i);
+        if (q) {
+          q.classList.remove("hidden");
+          q.classList.add("show");
+        }
+      }
     } catch (e) {
       console.error("プロファイル読み込みエラー:", e);
     }
   }
 
-  // retry=2のときメッセージ変更
   var numMessage = document.getElementById("numMessage");
   if (numMessage && retry === "2") {
     numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
