@@ -48,7 +48,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
       1: "しあい",
       2: "とりえ",
       3: "たかん",
-      4: "ことし",
+      4: "ことば",
       5: "ありがとう" // 5問目は変わらない例
     };
     if (altAnswers[questionNumber]) {
@@ -169,3 +169,4 @@ window.addEventListener("DOMContentLoaded", function () {
     console.error("データの解析に失敗:", e);
   }
 });
+
