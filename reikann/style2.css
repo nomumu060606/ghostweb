@@ -7,27 +7,39 @@
   font-weight: bold;
 }
 
-
-.main{
-  width: auto;
-  background-color: #68DFE1;
+html, body {
+  overflow-x: hidden;
+  background-color: #68DFE1; /* ← ページ全体の背景も青に */
 }
 
-/* 後ろの基本設定 */
+.main {
+  width: 100%;
+  background-color: #68DFE1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.9); /* ← こちらに移動 */
+  transform-origin: top center;
+}
+
+/* 背景ブロック白色のところ */
+/* 背景ブロック */
 .block {
-    width: 800px;
-    margin: auto;
-    padding: 50px;
-	background-color: #FFFFFF;
+  width: 800px;
+  max-width: 95%;
+  margin: 30px auto 30px;
+  padding: 50px;
+  background-color: #FFFFFF;
 }
 div {
     display: block;
     unicode-bidi: isolate;
 }
 
+/* 白背景の中の全部のコンテンツ */
 .inblock {
-    margin: auto;
-	color: #010000;
+  margin: 40px auto 20px auto;
+  color: #010000;
 }
 
 .selectarea{
@@ -100,20 +112,6 @@ form{
 }
 
 
-
-
-
-/* ヘッダー */
-header {
-  text-align: center;
-  background-color: #FCFCFC;
-  color: black;
-  padding: 10px 20px;
-}
-
-header h1 {
-  margin-bottom: 0px;
-}
 
 /* コンテンツ全体 */
 .content {
@@ -445,6 +443,14 @@ body {
   .profile-setup {
     transform: scale(0.9);
   }
+	.main {
+    transform: scale(0.9);
+    transform-origin: top center;
+		
+}
+	.block {
+    padding: 30px 20px;
+  }
 }
 
 /* スマホサイズ（600px以下）でさらに縮小 */
@@ -452,6 +458,10 @@ body {
   .profile-setup {
     transform: scale(0.8);
   }
+	.main {
+    transform: scale(0.8);
+    transform-origin: top center;
+}
 }
 
 /* 小さいスマホ（400px以下）で大幅に縮小 */
@@ -459,4 +469,8 @@ body {
   .profile-setup {
     transform: scale(0.7);
   }
+	.main {
+    transform: scale(0.7);
+    transform-origin: top center;
 }
+	}
