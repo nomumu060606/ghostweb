@@ -77,18 +77,24 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
 // === 前ページからのデータを読み取って画像を表示 ===
 window.addEventListener("DOMContentLoaded", function () {
+  console.log("Loaded system2.js");  // ← 追加
   var params = new URLSearchParams(window.location.search);
   var dataParam = params.get("data");
+  console.log("dataParam:", dataParam);  // ← 追加
+
   if (!dataParam) {
-    // デバッグログ：パラメータ無し
     console.log("no data param");
     return;
   }
 
   try {
     var decoded = decodeURIComponent(dataParam);
+    console.log("decoded data:", decoded);  // ← 追加
     var resultData = JSON.parse(decoded);
+    console.log("resultData:", resultData);  // ← 追加
+
     var key = resultData.key || "";
+    console.log("key value:", key);  // ← 追加
     // デバッグログ：受け取ったキー
     console.log("received key:", key);
 
