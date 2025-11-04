@@ -22,6 +22,7 @@ function saveProfile(event) {
   message.textContent = "✅ プロフィールを保存しました！";
   setTimeout(function () { message.textContent = ""; }, 3000);
 
+  // ✅ クイズ全体を表示
   var quizSection = document.getElementById("quizSection");
   if (quizSection) {
     quizSection.classList.remove("hidden");
@@ -29,10 +30,11 @@ function saveProfile(event) {
   }
 }
 
+// === グローバル変数 ===
 var correctAnswers = [false, false, false, false, false];
-var retryLevel = "1";
+var correctCount = 0;
 
-// === 回答チェック ===
+// === 答えをチェック ===
 function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   if (event && event.preventDefault) event.preventDefault();
 
@@ -42,145 +44,82 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
   message.classList.remove("result-correct", "result-wrong");
 
-  // ✅ retry=2 の場合は正解を上書き
-  if (retryLevel === "2") {
-    var altAnswers = {
-      1: "しあい",
-      2: "とりえ",
-      3: "たかん",
-      4: "ことば",
-      5: "ありがとう" // 5問目は変わらない例
-    };
-    if (altAnswers[questionNumber]) {
-      correctAnswer = altAnswers[questionNumber];
-    }
+  // ✅ URLパラメータ retry を取得
+  var params = new URLSearchParams(window.location.search);
+  var retry = params.get("retry");
+
+  // ✅ retry=2 のとき、答えを変更する
+  if (retry === "2") {
+    // ここで「第n問の正解」を上書き
+    if (questionNumber === 1) correctAnswer = "しあい";
+    if (questionNumber === 2) correctAnswer = "とりえ";
+    if (questionNumber === 3) correctAnswer = "たかん";
+    if (questionNumber === 4) correctAnswer = "ことば";
+    if (questionNumber === 5) correctAnswer = "ありがとう";
   }
 
-  // --- retry=2 の特殊コメント処理 ---
-  if (retryLevel === "2") {
-    if (questionNumber === 1 && userInput === "いあい") {
-      message.innerHTML = "（以前これで間違っていた。相手は何と答えたんだろう。）";
-      message.classList.add("result-wrong");
-      return;
-    }
-    if (questionNumber === 2 && userInput === "とりこ") {
-      message.innerHTML = "（以前これで間違っていた。相手は何と答えたんだろう。）";
-      message.classList.add("result-wrong");
-      return;
-    }
-    if (questionNumber === 3 && userInput === "たから") {
-      message.innerHTML = "（以前これで間違っていた。相手は何と答えたんだろう。）";
-      message.classList.add("result-wrong");
-      return;
-    }
-    if (questionNumber === 4 && userInput === "ことし") {
-      message.innerHTML = "（以前これで間違っていた。相手は何と答えたんだろう。）";
-      message.classList.add("result-wrong");
-      return;
-    }
-  }
-
-  // --- 通常正解処理 ---
   if (userInput === correctAnswer) {
-    message.innerHTML = retryLevel === "2" ? "（よし、これなら...！）" : "（よし、なんだか合っていそう）";
+    message.textContent = "（よし、なんだか合っていそう）";
     message.classList.add("result-correct");
+    correctAnswers[questionNumber - 1] = true;
+    correctCount++;
+
     document.getElementById("ans" + questionNumber).disabled = true;
 
-    correctAnswers[questionNumber - 1] = true;
-
-    var allCorrect = correctAnswers.every(function (val) { return val; });
-    if (allCorrect) {
+    // ✅ 全問正解したら結果へ
+    if (correctAnswers.every(v => v === true)) {
       setTimeout(function () {
-        nextBanner.style.display = "block";
-        setTimeout(function () {
-          nextBanner.classList.add("show");
-        }, 100);
-      }, 500);
+        // ✅ retry=2 のときは result2.html へ、それ以外は result1.html へ
+        if (retry === "2") {
+          window.location.href = "result2.html";
+        } else {
+          window.location.href = "result1.html";
+        }
+      }, 1000);
     }
 
-  } else if (!message.classList.contains("result-wrong")) {
-    message.innerHTML = "（何か違うような気がする）";
+  } else {
+    message.textContent = "（何か違うような気がする）";
     message.classList.add("result-wrong");
   }
 }
 
 // === ページ読み込み時 ===
 window.addEventListener("DOMContentLoaded", function () {
-	// ✅ プロフィールを localStorage から復元
-  var savedProfile = localStorage.getItem("userProfile");
-  if (savedProfile) {
-    try {
-      var profile = JSON.parse(savedProfile);
-      if (profile.name) document.getElementById("profileName").value = profile.name;
-      if (profile.age) document.getElementById("profileAge").value = profile.age;
-      if (profile.food) document.getElementById("profileFood").value = profile.food;
-      console.log("プロフィールを復元しました:", profile);
-    } catch (e) {
-      console.error("プロフィールの復元に失敗:", e);
-    }
-  }
-  console.log("Loaded revised system2.js with alt answers");
+  console.log("Loaded system2.js");
 
   var params = new URLSearchParams(window.location.search);
-  retryLevel = params.get("retry") || "1";
+  var retry = params.get("retry");
 
-  var numMessage = document.getElementById("numMessage");
-  if (numMessage) {
-    if (retryLevel === "2") {
-      numMessage.innerHTML = "（二度目だ。頑張ろう。）";
-    } else if (retryLevel === "3") {
-      numMessage.innerHTML = "（三度目だ。このままでは、、。）";
+  // ✅ retry=2 の場合でも、プロフィール保存されていなければ非表示にする
+  var quizSection = document.getElementById("quizSection");
+  var profile = localStorage.getItem("userProfile");
+
+  if (!profile) {
+    // プロフィール未保存 → クイズを隠す
+    if (quizSection) quizSection.classList.add("hidden");
+  } else {
+    // 保存済みならフォームに値を復元
+    try {
+      var data = JSON.parse(profile);
+      document.getElementById("profileName").value = data.name || "";
+      document.getElementById("profileAge").value = data.age || "";
+      document.getElementById("profileFood").value = data.food || "";
+
+      if (quizSection) {
+        quizSection.classList.remove("hidden");
+        quizSection.classList.add("show");
+      }
+    } catch (e) {
+      console.error("プロファイル読み込みエラー:", e);
     }
   }
 
-  // 全問題を初期表示
-  var questions = document.querySelectorAll("[id^='question']");
-  for (var i = 0; i < questions.length; i++) {
-    questions[i].style.display = "block";
-    questions[i].classList.add("show");
-  }
-
-  // --- 診断画像表示処理 ---
-  var dataParam = params.get("data");
-  if (!dataParam) return;
-
-  try {
-    var decoded = decodeURIComponent(dataParam);
-    var resultData = JSON.parse(decoded);
-    var key = resultData.key || "";
-    var imgSrc = "";
-
-    if (key === "41") imgSrc = "imgrei/診断1.png";
-    else if (key === "43") imgSrc = "imgrei/診断3.png";
-    else if (key === "44") imgSrc = "imgrei/診断4.png";
-    else if (key === "45") imgSrc = "imgrei/診断5.png";
-    else if (key === "52") imgSrc = "imgrei/診断2.png";
-
-    if (!imgSrc) return;
-
-    var memoryDiv = document.getElementById("memoryMessage");
-    if (!memoryDiv) return;
-
-    var img = new Image();
-    img.className = "memory-image";
-    img.src = imgSrc;
-    img.alt = "前回の結果";
-
-    img.onload = function () {
-      memoryDiv.innerHTML = "";
-      memoryDiv.appendChild(img);
-      setTimeout(function () {
-        memoryDiv.classList.add("show");
-      }, 100);
-    };
-
-    img.onerror = function () {
-      memoryDiv.textContent = "（結果画像の読み込みに失敗しました）";
-    };
-
-  } catch (e) {
-    console.error("データの解析に失敗:", e);
+  // ✅ retry=2 の場合のセリフ変更などがあればここに追記
+  var numMessage = document.getElementById("numMessage");
+  if (numMessage) {
+    if (retry === "2") {
+      numMessage.textContent = "（二度目だ。今度こそ正しい答えを…）";
+    }
   }
 });
-
-
