@@ -235,6 +235,7 @@ footer {
 .styled-submit:active {
   transform: translateY(0);
 }
+
 #resultMessage {
   font-size: 5px;
   margin-top: 15px;
@@ -319,8 +320,8 @@ footer {
   border: 2px solid #ccc;
   border-radius: 10px;
   padding: 5px;
-  width: 90%;
-  max-width: 500px;
+  width: 95%;
+  max-width: 700px;
   margin: 0 auto 40px;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
