@@ -42,13 +42,6 @@ div {
   color: #010000;
 }
 
-.selectarea{
-  width: 550px;
-  margin: 10px auto;
-  padding: 10px;
-  background-color: lightgray;
-  border-radius: 30px;
-}
 
 .text{
   margin: auto;
@@ -63,16 +56,6 @@ img.riddle{
   border-radius: 20px;
 }
 
-img.select{
-  margin: 10px 10px;
-  width: 80px;
-  cursor: pointer;
-}
-
-img.selected{
-  margin: 10px 10px;
-  width: 80px;
-}
 
 .button{
   width: 250px;
@@ -92,9 +75,6 @@ img.selected{
   margin: 30px;
 }
 
-form{
-  ;
-}
 #focus{
   border:3px solid #fef6fb;
   box-shadow:0 0 10px 0 #D09B52;
@@ -338,7 +318,7 @@ footer {
   background-color: rgba(255, 255, 255, 0.9);
   border: 2px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
+  padding: 5px;
   width: 90%;
   max-width: 500px;
   margin: 0 auto 40px;
