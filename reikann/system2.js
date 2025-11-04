@@ -54,6 +54,22 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
   message.classList.remove("result-correct", "result-wrong");
 
+  // ✅ retry=2かつ「前回の正解（いあい・とりこ・たから・ことし）」を入力した場合
+  if (
+    retry === "2" &&
+    (
+      (questionNumber === 1 && userInput === "いあい") ||
+      (questionNumber === 2 && userInput === "とりこ") ||
+      (questionNumber === 3 && userInput === "たから") ||
+      (questionNumber === 4 && userInput === "ことし")
+    )
+  ) {
+    message.textContent = "（ゆうさんは何と答えたのだろうか）";
+    message.classList.add("result-wrong");
+    return; // ✅ 他の処理をスキップ
+  }
+
+  // ✅ 通常の正解処理
   if (userInput === correctAnswer) {
     message.textContent = "（よし、なんだか合っていそう）";
     message.classList.add("result-correct");
@@ -80,6 +96,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
     message.classList.add("result-wrong");
   }
 }
+
 
 // === ページ読み込み時 ===
 window.addEventListener("DOMContentLoaded", function () {
@@ -127,6 +144,7 @@ window.addEventListener("DOMContentLoaded", function () {
     numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
   }
 });
+
 
 
 
