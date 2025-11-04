@@ -86,9 +86,12 @@ window.addEventListener("DOMContentLoaded", function () {
   var params = new URLSearchParams(window.location.search);
   var retry = params.get("retry");
 
-  // ✅ 「前ページから来た」場合だけプロフリセット
-  // referrer（直前のページURL）を使う
-  if (document.referrer && document.referrer.includes("result")) {
+  // ✅ 「前ページがresult系」のときだけプロフリセット（リロードでは消さない）
+  if (
+    document.referrer &&
+    (document.referrer.includes("result1.html") ||
+     document.referrer.includes("result2.html"))
+  ) {
     localStorage.removeItem("userProfile");
   }
 
@@ -96,8 +99,10 @@ window.addEventListener("DOMContentLoaded", function () {
   var quizSection = document.getElementById("quizSection");
 
   if (!profile) {
+    // 🔹 プロフィール未登録 → クイズ非表示
     quizSection.classList.add("hidden");
   } else {
+    // 🔹 プロフィールあり → 復元してクイズ全表示
     try {
       var data = JSON.parse(profile);
       document.getElementById("profileName").value = data.name || "";
@@ -105,6 +110,8 @@ window.addEventListener("DOMContentLoaded", function () {
       document.getElementById("profileFood").value = data.food || "";
 
       quizSection.classList.remove("hidden");
+      quizSection.classList.add("show");
+
       for (var i = 1; i <= 5; i++) {
         var q = document.getElementById("question" + i);
         if (q) q.classList.remove("hidden");
@@ -120,5 +127,6 @@ window.addEventListener("DOMContentLoaded", function () {
     numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
   }
 });
+
 
 
