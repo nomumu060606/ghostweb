@@ -281,31 +281,37 @@ footer {
   transform: scale(1.1);
 }
 
-/* スマホ対応（狭い画面では縦並び） */
+/* ================================
+   📱 スマホ表示でフォントを小さく
+   ================================ */
 @media (max-width: 600px) {
-  .next-banner-group {
-    flex-direction: column;
-    gap: 25px;
+  html, body {
+    font-size: 14px;  /* ← 全体を小さくする（元は18px） */
+  }
+
+  p, label, h2, h3, h4 {
+    font-size: 0.9em; /* ← 段階的に文字を小さく */
+    line-height: 1.5;
+  }
+
+  .message {
+    font-size: 18px;
+  }
+
+  .button {
+    font-size: 30px;
+    height: 60px;
+    width: 200px;
+  }
+
+  .banner-img, .banner-img2, .banner-img3 {
+    width: 80%;      /* ← 画像を小さくして中央寄せ */
+    max-width: 300px;
+  }
+
+  .becouse {
+    font-size: 0.9em;  /* ← テキスト部分を見やすく小さめに */
+    padding: 10px;
   }
 }
-
-/* ==== iPhoneでの自動ズーム防止設定 ==== */
-input,
-select,
-textarea {
-  font-size: 16px !important;  /* ←16px以上でズーム防止 */
-  -webkit-text-size-adjust: 100%;
-}
-
-html, body {
-  font-size: 18px; /* ←全体をやや大きく */
-}
-
-label, p, h2 {
-  font-size: 1.1em; /* ←バランス調整 */
-}
-
-.styled-input {
-  font-size: 18px !important; /* ←入力欄の文字も見やすく */
-  padding: 12px 8px;
-}
+💡ポイント
