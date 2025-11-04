@@ -1,153 +1,112 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>霊感テスト</title>
-  <link rel="stylesheet" href="style2.css">
-  <script type="text/javascript" src="system2.js" defer></script>
-</head>
-<body>
+// === プロフィール保存 ===
+function saveProfile(event) {
+  if (event && event.preventDefault) event.preventDefault();
 
+  var name = document.getElementById("profileName").value.trim();
+  var age = document.getElementById("profileAge").value;
+  var food = document.getElementById("profileFood").value;
+  var message = document.getElementById("profileSavedMessage");
 
+  if (name.length === 0 || name.length > 3) {
+    message.textContent = "⚠ 名前は1〜3文字以内で入力してください。";
+    return;
+  }
+  if (age === "" || food === "") {
+    message.textContent = "⚠ すべての項目を選択してください。";
+    return;
+  }
 
-  <main>
-    <div class="main">
-      <div class="block">
-        <div class="inblock">
-			<img src="imgrei/合格.png" alt="goukaku" class="result-img">
-		<div id="memoryMessage" class="previous-result"></div>
-		<br><br><br><p2>※一部サービスは終了しております。ご注意下さい。</p2><br>
-			<p2>まずはプロフィールを設定してください。</p2><br><br><br>
-		<div id="profileArea" class="profile-setup">
-  <h2>プロフィール設定</h2><br>
-  <form id="profileForm" onsubmit="saveProfile(event)">
-    <label>名前（3文字以内）：
-      <input type="text" id="profileName" maxlength="3" required>
-    </label>
+  var profile = { name: name, age: age, food: food };
+  localStorage.setItem("userProfile", JSON.stringify(profile));
 
+  message.textContent = "✅ プロフィールを保存しました！";
+  setTimeout(function () {
+    message.textContent = "";
+  }, 3000);
 
-    <label>年齢：
-      <select id="profileAge" required>
-        <option value="">選択してください</option>
-        <option value="10代">10代</option>
-        <option value="20代">20代</option>
-        <option value="30代">30代</option>
-        <option value="40代">40代</option>
-        <option value="50代">50代</option>
-        <option value="60代">60代</option>
-        <option value="70代">70代</option>
-        <option value="80代">80代</option>
-        <option value="90代">90代</option>
-      </select>
-    </label>
+  // クイズを表示
+  var quizSection = document.getElementById("quizSection");
+  quizSection.classList.remove("hidden");
+  quizSection.classList.add("show");
+}
 
+var correctAnswers = [false, false, false, false, false];
 
-    <label>きらいな食べ物：
-      <select id="profileFood" required>
-        <option value="">選択してください</option>
-        <option value="ナス">ナス</option>
-        <option value="ウリ">ウリ</option>
-        <option value="ネギ">ネギ</option>
-        <option value="ニラ">ニラ</option>
-      </select>
-    </label>
-	  <label>自己紹介：※サービス終了しました</label>
-	  <label>プロフィール画像：※サービス終了しました</label>
-	  <label>謎の選択：※サービス終了しました</label>
+// === 答えチェック ===
+function checkAnswerGeneric(event, questionNumber, correctAnswer) {
+  if (event && event.preventDefault) event.preventDefault();
 
- 
-    <br>
+  var userInput = document.getElementById("ans" + questionNumber).value.trim();
+  var message = document.getElementById("resultMessage" + questionNumber);
+  var params = new URLSearchParams(window.location.search);
+  var retry = params.get("retry");
 
-    <input type="submit" value="保存" class="styled-submit">
-  </form>
+  // ✅ retry=2 の時は正解セットを上書き
+  if (retry === "2") {
+    var retryAnswers = ["いあい", "とりこ", "たから", "ことし", "ありがとう"];
+    correctAnswer = retryAnswers[questionNumber - 1];
+  }
 
-  <p id="profileSavedMessage" class="saved-message"></p>
-</div>
-			
-	<div id="quizSection" class="hidden">	
+  message.classList.remove("result-correct", "result-wrong");
 
-			  <br><br><br><br><br>
-            <img src="imgrei/マッチング候補発見.png" alt="タイトル画像" class = "profimg">
-            <img src="imgrei/霊感募集プロフ2.png" alt="プロフィール画像" class = "profimg">
-          
-			
-          <!-- ✅ 第一問 -->
-          <div class="inblock" id="question1">
-  <h2>第一問</h2>
+  if (userInput === correctAnswer) {
+    message.textContent = "（よし、なんだか合っていそう）";
+    message.classList.add("result-correct");
+    correctAnswers[questionNumber - 1] = true;
 
-  <!-- 🔹画像＋年齢テキストのラッパー -->
-  <div class="question-image-wrapper">
-    <img src="imgrei/2-1-1.png" class="riddle" alt="問題">
-    <div class="age-overlay" id="overlayAgeText"></div>
-  </div>
+    document.getElementById("ans" + questionNumber).disabled = true;
 
-  <form id="quizForm1" onsubmit="checkAnswerGeneric(event, 1, 'いあい')" class="styled-form">
-    <input type="text" id="ans1" placeholder="答えを入力" required class="styled-input">
-    <input type="submit" value="答える" class="styled-submit">
-  </form>
+    // 全問正解チェック
+    var allCorrect = true;
+    for (var i = 0; i < correctAnswers.length; i++) {
+      if (!correctAnswers[i]) {
+        allCorrect = false;
+        break;
+      }
+    }
 
-  <p id="resultMessage1" class="result-message"></p>
-</div>
+    if (allCorrect) {
+      setTimeout(function () {
+        if (retry === "2") {
+          window.location.href = "result2.html";
+        } else {
+          window.location.href = "result1.html";
+        }
+      }, 1200);
+    }
+  } else {
+    message.textContent = "（何か違うような気がする）";
+    message.classList.add("result-wrong");
+  }
+}
 
-          <!-- ✅ 第二問 -->
-          <div id="question2" class="inblock hidden">
-            <h2>第二問</h2>
-            <img src="imgrei/2-2-1.png" class="riddle" alt="問題">
-            <h2>語群</h2>
-            <img src="imgrei/2-2-2-1.png" class="riddle" alt="語群">
-            <form id="quizForm2" onsubmit="checkAnswerGeneric(event, 2, 'とりこ')" class="styled-form">
-              <input type="text" id="ans2" placeholder="答えを入力" required class="styled-input">
-              <input type="submit" value="答える" class="styled-submit">
-            </form>
-            <p id="resultMessage2" class="result-message"></p>
-          </div>
+// === ページ読み込み時 ===
+window.addEventListener("DOMContentLoaded", function () {
+  var params = new URLSearchParams(window.location.search);
+  var retry = params.get("retry");
+  var quizSection = document.getElementById("quizSection");
+  var profile = localStorage.getItem("userProfile");
 
-          <!-- ✅ 第三問 -->
-          <div id="question3" class="inblock hidden">
-            <h2>第三問</h2>
-            <img src="imgrei/2-3-1.png" class="riddle" alt="問題">
-            <form id="quizForm3" onsubmit="checkAnswerGeneric(event, 3, 'たから')" class="styled-form">
-              <input type="text" id="ans3" placeholder="答えを入力" required class="styled-input">
-              <input type="submit" value="答える" class="styled-submit">
-            </form>
-            <p id="resultMessage3" class="result-message"></p>
-          </div>
+  if (!profile) {
+    // プロフィール未保存 → クイズを隠す
+    quizSection.classList.add("hidden");
+  } else {
+    // 保存済 → 値復元
+    try {
+      var data = JSON.parse(profile);
+      document.getElementById("profileName").value = data.name || "";
+      document.getElementById("profileAge").value = data.age || "";
+      document.getElementById("profileFood").value = data.food || "";
+      quizSection.classList.remove("hidden");
+      quizSection.classList.add("show");
+    } catch (e) {
+      console.error("プロファイル読み込みエラー:", e);
+    }
+  }
 
-          <!-- ✅ 第四問 -->
-          <div id="question4" class="inblock hidden">
-            <h2>第四問</h2>
-            <img src="imgrei/2-4.png" class="riddle" alt="問題">
-            <form id="quizForm4" onsubmit="checkAnswerGeneric(event, 4, 'ことし')" class="styled-form">
-              <input type="text" id="ans4" placeholder="答えを入力" required class="styled-input">
-              <input type="submit" value="答える" class="styled-submit">
-            </form>
-            <p id="resultMessage4" class="result-message"></p>
-          </div>
-
-          <!-- ✅ 第五問 -->
-          <div id="question5" class="inblock hidden">
-            <h2>第五問</h2>
-            <img src="imgrei/2-5.png" class="riddle" alt="問題">
-            <form id="quizForm5" onsubmit="checkAnswerGeneric(event, 5, 'ありがとう')" class="styled-form">
-              <input type="text" id="ans5" placeholder="答えを入力" required class="styled-input">
-              <input type="submit" value="答える" class="styled-submit">
-            </form>
-            <p id="resultMessage5" class="result-message"></p>
-          </div>
-
-          <!-- ✅ 第5問正解時に出るバナー -->
-          <div id="nextBanner" class="next-banner" style="display:none;">
-            <a href="https://nomumu060606.github.io/ghostweb/reikann/result1">
-              <img src="imgrei/バナー2.png" alt="次へ進む" class="banner-img">
-            </a>
-          </div>
-</div> <!-- /hidden -->
-        </div> <!-- /.inblock -->
-      </div> <!-- /.block -->
-    </div> <!-- /.main -->
-  </main>
-</body>
-</html>
-
-
+  // retry=2のときメッセージ変更
+  var numMessage = document.getElementById("numMessage");
+  if (numMessage && retry === "2") {
+    numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
+  }
+});
