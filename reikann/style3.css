@@ -273,59 +273,54 @@ footer {
   transform: scale(1.1);
 }
 
+
 /* ================================
-   📱 スマホ表示でフォントを小さく
+   📱 スマホ／PC表示のバランス調整
+   ================================ */
+
+/* 💻 PCデフォルト文字を少し大きく、読みやすく */
+html, body {
+  font-size: 22px;  /* ← 元は小さすぎたのでアップ */
+  line-height: 1.8;
+}
+
+/* 🖼 マッチング失敗画像（大きく見せる） */
+.banner-img {
+  width: 50%;       /* ← PCで少し大きめ */
+  max-width: 600px;
+}
+
+/* ================================
+   📱 スマホ専用調整（600px以下）
    ================================ */
 @media (max-width: 600px) {
+  /* 📱 フォントを少し小さくして読みやすく */
   html, body {
-    font-size: 20px;  /* ← 全体を小さくする（元は18px） */
+    font-size: 16px;   /* ← 小さくてOK */
+    line-height: 1.6;
   }
 
-  p, label, h2, h3, h4 {
-    font-size: 0.9em; /* ← 段階的に文字を小さく */
-    line-height: 1.5;
+  /* 📱 マッチング失敗画像を大きく */
+  .banner-img {
+    width: 85%;        /* ← スマホではかなり大きく表示 */
+    max-width: none;
   }
 
-  .message {
-    font-size: 18px;
-  }
-
-  .button {
-    font-size: 30px;
-    height: 60px;
-    width: 200px;
-  }
-
-  .banner-img, .banner-img2, .banner-img3 {
-    width: 30%;      /* ← 画像を小さくして中央寄せ */
+  /* 📱 「神」画像もやや大きめに */
+  .banner-img2 {
+    width: 70%;
     max-width: 300px;
   }
 
+  /* 📱 テキスト部分を読みやすく・コンパクトに */
   .becouse {
-    font-size: 0.9em;  /* ← テキスト部分を見やすく小さめに */
-    padding: 10px;
+    font-size: 0.85em;
+    padding: 10px 20px;
+  }
+
+  /* 📱 「やり直す」ボタンを中央で見やすく */
+  .banner-img3 {
+    width: 30%;
+    max-width: 220px;
   }
 }
-
-
-  html, body {
-    font-size: 20px; /* ← 全体的に少し大きく（元は18px） */
-  }
-
-
-  .becouse {
-    font-size: 1.2em;
-  }
-
-  .message {
-    font-size: 28px;
-  }
-
-  .button {
-    font-size: 40px;
-  }
-
-  .banner-img3 {
-    width: 30%;      /* ← 画像を小さくして中央寄せ */
-    max-width: 200px;
-  }
