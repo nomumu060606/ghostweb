@@ -214,14 +214,8 @@ footer {
   margin: 50px auto
 }
 .banner-img2 {
-  width: 200px;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-.banner-img3 {
-  width: 100px;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  width: 30%;
+
 }
 
 .becouse {
@@ -241,10 +235,8 @@ footer {
   transform: translateY(0);
 }
 .banner-img3 {
-  width: 100px;
+  width: 30%;
   border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .banner-img3:hover {
   transform: scale(1.08);
@@ -286,7 +278,7 @@ footer {
    ================================ */
 @media (max-width: 600px) {
   html, body {
-    font-size: 14px;  /* ← 全体を小さくする（元は18px） */
+    font-size: 20px;  /* ← 全体を小さくする（元は18px） */
   }
 
   p, label, h2, h3, h4 {
@@ -305,7 +297,7 @@ footer {
   }
 
   .banner-img, .banner-img2, .banner-img3 {
-    width: 80%;      /* ← 画像を小さくして中央寄せ */
+    width: 30%;      /* ← 画像を小さくして中央寄せ */
     max-width: 300px;
   }
 
@@ -314,4 +306,26 @@ footer {
     padding: 10px;
   }
 }
-💡ポイント
+
+
+  html, body {
+    font-size: 20px; /* ← 全体的に少し大きく（元は18px） */
+  }
+
+
+  .becouse {
+    font-size: 1.2em;
+  }
+
+  .message {
+    font-size: 28px;
+  }
+
+  .button {
+    font-size: 40px;
+  }
+
+  .banner-img3 {
+    width: 30%;      /* ← 画像を小さくして中央寄せ */
+    max-width: 200px;
+  }
