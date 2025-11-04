@@ -75,42 +75,79 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 }
 
 
-// === 前ページからのデータを読み取ってメッセージを表示 ===
+// === 前ページからのデータを読み取って画像を表示 ===
 window.addEventListener("DOMContentLoaded", function () {
   var params = new URLSearchParams(window.location.search);
   var dataParam = params.get("data");
-  if (!dataParam) return;
+  if (!dataParam) {
+    // デバッグログ：パラメータ無し
+    console.log("no data param");
+    return;
+  }
 
   try {
     var decoded = decodeURIComponent(dataParam);
     var resultData = JSON.parse(decoded);
     var key = resultData.key || "";
-    var answers = resultData.answers || [];
+    // デバッグログ：受け取ったキー
+    console.log("received key:", key);
 
     // --- 表示する画像を決定 ---
-var imgSrc = "";
-if (key === "41") {
-  imgSrc = "imgrei/診断1.png";
-} else if (key === "43") {
-  imgSrc = "imgrei/診断3.png";
-} else if (key === "44") {
-  imgSrc = "imgrei/診断4.png";
-} else if (key === "45") {
-  imgSrc = "imgrei/診断5.png";
-} else if (key === "52") {
-  imgSrc = "imgrei/診断2.png";
-}
+    var imgSrc = "";
+    if (key === "41") {
+      imgSrc = "imgrei/診断1.png";
+    } else if (key === "43") {
+      imgSrc = "imgrei/診断3.png";
+    } else if (key === "44") {
+      imgSrc = "imgrei/診断4.png";
+    } else if (key === "45") {
+      imgSrc = "imgrei/診断5.png";
+    } else if (key === "52") {
+      imgSrc = "imgrei/診断2.png";
+    }
 
-// --- 画像を表示 ---
-if (imgSrc !== "") {
-  var memoryDiv = document.getElementById("memoryMessage");
-  if (memoryDiv) {
-    memoryDiv.innerHTML = '<img src="' + imgSrc + '" alt="前回の結果" class="memory-image">';
-    setTimeout(function() {
-      memoryDiv.classList.add("show");
-    }, 100);
-  }
-}
+    if (imgSrc === "") {
+      console.log("no matching imgSrc for key:", key);
+      return;
+    }
+
+    var memoryDiv = document.getElementById("memoryMessage");
+    if (!memoryDiv) {
+      console.log("memoryMessage element not found");
+      return;
+    }
+
+    // 既存内容をクリア
+    memoryDiv.innerHTML = "";
+
+    // 画像要素を作成してロード確認
+    var img = new Image();
+    img.className = "memory-image";
+    img.alt = "前回の結果";
+
+    // onload / onerror を付けて挙動を可視化
+    img.onload = function () {
+      console.log("image loaded:", imgSrc);
+      memoryDiv.appendChild(img);
+      // 見せ方用のクラスを付与（CSSで .show を使ってフェード等を制御）
+      setTimeout(function () {
+        // 追加の show クラスを element 自身に付ける（既存のCSSが #memoryMessage.show .memory-image を想定している場合は memoryDiv に付ける）
+        if (memoryDiv.classList) {
+          memoryDiv.classList.add("show");
+        } else {
+          memoryDiv.className += " show";
+        }
+      }, 100);
+    };
+
+    img.onerror = function (e) {
+      console.error("image failed to load:", imgSrc, e);
+      // フォールバックのテキスト表示
+      memoryDiv.textContent = "（結果画像の読み込みに失敗しました）";
+    };
+
+    // 画像読み込み開始（パスが正しいかに依存）
+    img.src = imgSrc;
 
   } catch (e) {
     console.error("データの解析に失敗:", e);
