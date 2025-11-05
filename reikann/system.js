@@ -53,7 +53,7 @@ function check() {
     nextUrl = "https://nomumu060606.github.io/ghostweb/reikann/htmlrei2.html";
   } else if (answerKey === "1215") {
     nextUrl = "https://nomumu060606.github.io/ghostweb/reikann/htmlrei2.html";
-  } else if (answerKey === "1212") {
+  } else if (answerKey === "1222") {
     nextUrl = "https://nomumu060606.github.io/ghostweb/reikann/htmlrei4.html";
   }
 
@@ -77,3 +77,4 @@ function check() {
     document.getElementById("button").disabled = false;
   }
 }
+
