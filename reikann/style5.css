@@ -7,26 +7,36 @@
   font-weight: bold;
 }
 
-  header {
-    background-color: white; /* ← 背景を白くする！ */
-    color: black;             /* ← 文字の色を黒にする */
-    padding: 20px;            /* ← 内側の余白をつけて見やすくする */
-    text-align: center;       /* ← 文字を中央にそろえる */
-    border-bottom: 2px solid #ccc; /* ← 下にうっすら線を引く（おしゃれ） */
-  }
+html, body {
+  overflow-x: hidden;
+  background-color: #010000; /* ← ページ全体の背景も青に */
+}
 
-.main{
-  width: auto;
+.main {
+  width: 100%;
   background-color: #010000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.9); /* ← こちらに移動 */
+  transform-origin: top center;
 }
 
-/* 後ろの基本設定 */
+/* 背景ブロック白色のところ */
+/* 背景ブロック */
 .block {
-    width: 800px;
-    margin: 30px auto;
-    padding: 50px;
-	background-color: #FFFFFF;
+  width: 1000px;
+  max-width: 95%;
+  margin: 30px auto 30px;
+  padding: 50px;
+  background-color: #FFFFFF;
 }
+
+.profimg {
+  width: 70%;
+  max-width: 400px;
+}
+
 div {
     display: block;
     unicode-bidi: isolate;
@@ -393,7 +403,7 @@ footer {
 /* 名前の文字（位置は%指定） */
 .name-overlay {
   position: absolute;
-  top: 21.0%;          /* 縦の位置 → 画像の高さに対する割合 */
+  top: 20.5%;          /* 縦の位置 → 画像の高さに対する割合 */
   left: 15.5%;         /* 横の位置 → 画像の幅に対する割合 */
   color: red;
   font-family: "BIZ UD明朝 Medium", "BIZ UDMincho Medium", serif;
