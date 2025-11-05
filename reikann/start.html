@@ -1,77 +1,113 @@
-<link href="startcss.css" rel="stylesheet" type="text/css">
-<div class="room">
-  <ul>
-    <li class="chat you">   <!-- 相手のメッセージにはclass「you」をつける。 -->
-      <p class="mes">こんにちは！</p>
-      <div class="status">17:00</div>
-    </li>
-	<li class="chat you">   <!-- 相手のメッセージにはclass「you」をつける。 -->
-      <p class="mes">霊感がある謎解きマスターのかたですよね！！！！<br>
-		私、オカルト雑誌ライターの謎都　木無利（なぞと　きむり）と申します！</p>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>手紙風デザイン</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      background: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .letter {
+      background: #fffef8;
+      border: 1px solid #e0dccc;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      padding: 30px;
+      position: relative;
+    }
+	  .red{
+		 color:red;
+		}
+
+    .letter header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .letter-body {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #333;
+      white-space: pre-line;
+    }
+
+    .stamp {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      background: transparent;
+      color: #be3b3b;
+      font-weight: 700;
+      border: 2px dashed rgba(190,59,59,0.2);
+      padding: 8px 12px;
+      border-radius: 6px;
+      transform: rotate(-14deg);
+      opacity: 0.8;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+	  .img{
+		  border: 3px solid #000000; /* 赤色の5ピクセルの実線枠線 */
+	  }
+
+    @media (max-width: 600px) {
+      .letter {
+        padding: 20px;
+      }
+      .letter-body {
+        font-size: 15px;
+      }
+      .stamp {
+        right: 14px;
+        bottom: 14px;
+      }
 		
-      <div class="status">17:00</div>
-    </li>
-    <li class="chat me">    <!-- 相手のメッセージにはclass「me」をつける。 -->
-      <p class="mes">こんにちは！</p>
-      <div class="status">既読<br>17:05</div>
-    </li>
-	  
-	 <li class="chat me">    <!-- 相手のメッセージにはclass「me」をつける。 -->
-      <p class="mes">私こそが謎解き力のあるスーパー霊能力者です。</p>
-      <div class="status">既読<br>17:05</div>
-    </li>
-	  
-	<li class="chat you">   <!-- 相手のメッセージにはclass「you」をつける。 -->
-      <p class="mes">あなたに依頼したいのは、あるマッチングアプリの調査です。
-		そのアプリは、始めた人が必ず失踪すると言われているんです。</p>
-      <div class="status">17:00</div>
-    </li>
-	  
-	<li class="chat you">   <!-- 相手のメッセージにはclass「you」をつける。 -->
-      <p class="mes">でも、もう何年も前の都市伝説なので、<br>
-		アプリの存在自体、怪しいものだったんですけど、、</p>
-      <div class="status">17:00</div>
-    </li>
-	  
-	<li class="chat you">   <!-- 相手のメッセージにはclass「you」をつける。 -->
-      <p class="mes">私が見つけてきました！！！！！<br></p>
-      <div class="status">17:00</div>
-    </li>
-	<li class="chat you">
-	<p><img src="imgrei/マッチ説明.png" class="chat you img" alt="問題" width="50%" height="100%"></p>
-	</li>
-	<li class="chat me">    <!-- 相手のメッセージにはclass「me」をつける。 -->
-      <p class="mes">なるほどなるほど</p>
-      <div class="status">既読<br>17:05</div>
-    </li>
-	  
-	<li class="chat me">    <!-- 相手のメッセージにはclass「me」をつける。 -->
-      <p class="mes">つまり、、<br>今回の私のクリア条件は「無事にマッチングすること」<br>ですね！</p>
-      <div class="status">既読<br>17:05</div>
-    </li>
-	  
-	<li class="chat you">   <!-- 相手のメッセージにはclass「you」をつける。 -->
-      <p class="mes">はい！お願いします！</p>
-      <div class="status">17:00</div>
-    </li>
-	<li class="chat you">   <!-- 相手のメッセージにはclass「you」をつける。 -->
-      <p class="mes">私、謎解きを全く知らなくて、友達に聞いて赤字読むやつ習ったんですよ。</p>
-      <div class="status">17:00</div>
-    </li>
-	<li class="chat you">   <!-- 相手のメッセージにはclass「you」をつける。 -->
-		<p class="mes">それでも、診断テストのクリアまでしかできなくて...。<br>ほんとに頼みます！</p>
-      <div class="status">17:00</div>
-    </li>
-	 <li class="chat you">   <!-- 相手のメッセージにはclass「you」をつける。 -->
-		<p class="mes">↓この画像をクリックして始めてください。</p>
-      <div class="status">17:00</div>
-    </li>
-	  
-	 <div>
-    <a href="https://nomumu060606.github.io/ghostweb/reikann/htmlrei">
-      <img src="imgrei/バナー.png" alt="バナー">
+    }
+  </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="letter">
+    <header>
+      <span>オカルトライター　謎都　木無利</span>
+    </header>
+
+    <div class="letter-body">
+      <p>こんにちは。</p>
+      <p>俺は、オカルトライターをやってる「<strong>謎都　木無利</strong>」です</p>
+      <p>今回、霊感もあって謎も解ける君にお願いしたいのは、
+      ある<strong>マッチングアプリの調査</strong>だ。</p>
+		<p>何を隠そう、このアプリは始めた人が絶対に「<strong class = "red">失踪する</strong>」と噂のオカルトアプリらしい。そのアプリを先日私が偶然見つけたんだ。</p>
+		<p>しかし、問題がある。
+		このアプリを始めるためには謎を解かなければいけないらしい。</p>
+		<p>私は謎が全く解けない。
+		友人に赤い文字を読む？のを習ったが全然解けない。</p>
+		<p>そこで君に依頼したというわけだ。</p>
+	  <p>私の依頼達成条件は</p>
+		<p class = "red">　<strong>マッチングを成功させること、失踪しないこと。</strong></p>
+		<p>私が詳しい話を聞くことができなくなるからな。
+		それでは頼むぞ。</p>
+    </div>
+
+    <div class="stamp">CONFIDENTIAL</div>
+	  <a href="https://nomumu060606.github.io/ghostweb/reikann/htmlrei">
+      <img src="imgrei/バナー.png" alt="バナー" class = "img">
     </a>
   </div>
-	  
-  </ul>
-</div>
+	
+</body>
+</html>
