@@ -1,5 +1,5 @@
 // === 初期変数 ===
-var answersArray = ["0", "0"];   // ユーザーの回答
+var answersArray = ["0", "0", "0", "0"];   // ユーザーの回答
 var sending = false;
 
 // === 選択肢リセット ===
@@ -45,15 +45,15 @@ function check() {
   var nextUrl = ""; // 遷移先URLを格納
 
   // --- パターン別に判定 ---
-  if (answerKey === "41") {
+  if (answerKey === "1211") {
     nextUrl = "https://nomumu060606.github.io/ghostweb/reikann/htmlrei2.html";
-  } else if (answerKey === "43") {
+  } else if (answerKey === "1213") {
     nextUrl = "https://nomumu060606.github.io/ghostweb/reikann/htmlrei2.html";
-  } else if (answerKey === "44") {
+  } else if (answerKey === "1214") {
     nextUrl = "https://nomumu060606.github.io/ghostweb/reikann/htmlrei2.html";
-  } else if (answerKey === "45") {
+  } else if (answerKey === "1215") {
     nextUrl = "https://nomumu060606.github.io/ghostweb/reikann/htmlrei2.html";
-  } else if (answerKey === "52") {
+  } else if (answerKey === "1212") {
     nextUrl = "https://nomumu060606.github.io/ghostweb/reikann/htmlrei4.html";
   }
 
