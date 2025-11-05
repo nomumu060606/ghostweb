@@ -20,13 +20,14 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: scale(0.9); /* ← こちらに移動 */
-  transform-origin: top center;
 }
 
 .kuroshiro {
   color: white;              /* 文字を白に */
   background-color: black;   /* 背景を黒に */         
+}
+.num{
+	width: clamp(100px, 50vw, 400px)
 }
 
 /* 📱 画面幅に応じて文字を自動縮小する設定 */
