@@ -13,13 +13,15 @@
     <div class="main">
       <div class="block">
         <div class="inblock">
-		<h2>一部サービスは終了しております。</h2>
-			<br><br><br><p>あなたは人間に憑きたい霊ですね。以下、ルールに従ってください。</p><br><br>
+		<img src="imgrei/合格.png" alt="goukaku" class="result-img">
+		<div id="memoryMessage" class="previous-result"></div>
+		<br><br><br><p2>※一部サービスは終了しております。ご注意下さい。</p2><br>
+			<br><br><p2>以下のルールに従って下さい。</p2><br><br>
 			<p>1. マッチングには相手と同じ回答である必要があります。</p>
 			<p>   （同じであれば謎の正解・不正解は問いません）</p><br>
-			<p>2. 五問目（最後）の答えは感謝を表す答えを記入してください。</p>
+			<p>2. 五問目（最後）の答えは感謝を表すであろう言葉を記入してください。</p>
 			<p>   （例）かんしゃ、ありがとう、ありが10、39等</p><br><br><br>
-			<br><br><br><br><br>
+			<br><br><br><p2>まずはプロフィールを設定してください。</p2><br><br>
 		<div id="profileArea" class="profile-setup">
   <h2>プロフィール設定</h2>
   <form id="profileForm" onsubmit="saveProfile(event)">
@@ -61,14 +63,14 @@
 
     <input type="submit" value="保存" class="styled-submit">
   </form>
-　　
+
   <p id="profileSavedMessage" class="saved-message"></p>
 </div>
-<div id="quizSection" class="hidden">
+<div id="quizSection" class="show">
           <div class="intro">
 			  <br><br><br><br><br><br><br><br>
-            <img src="imgrei/マッチング候補発見.png" width="400" height="100" alt="タイトル画像">
-            <img src="imgrei/プロフ 2.png" width="500" height="700" alt="プロフィール画像">
+            <img src="imgrei/マッチング候補発見.png" alt="タイトル画像" class = "profimg"><br>
+            <img src="imgrei/プロフ 2.png" alt="プロフィール画像" class = "profimg">
           </div>
 			
           <!-- ✅ 第一問 -->
@@ -154,7 +156,7 @@
 
           <!-- ✅ 第5問正解時に出るバナー -->
           <div id="nextBanner" class="next-banner" style="display:none;">
-            <a href="https://nomumu060606.github.io/ghostweb/reikann/result2">
+            <a href="https://nomumu060606.github.io/ghostweb/reikann/clear">
               <img src="imgrei/バナー2.png" alt="次へ進む" class="banner-img">
             </a>
           </div>
