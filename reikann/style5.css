@@ -403,11 +403,11 @@ footer {
 /* 名前の文字（位置は%指定） */
 .name-overlay {
   position: absolute;
-  top: 20.5%;          /* 縦の位置 → 画像の高さに対する割合 */
+  top: 20%;          /* 縦の位置 → 画像の高さに対する割合 */
   left: 15.5%;         /* 横の位置 → 画像の幅に対する割合 */
   color: red;
   font-family: "BIZ UD明朝 Medium", "BIZ UDMincho Medium", serif;
-  font-size: 1.5em;  /* ✅ 画面幅に比例して文字サイズを変化 */
+  font-size: 1.3em;  /* ✅ 画面幅に比例して文字サイズを変化 */
   font-weight: 500;
   text-align: left;
   white-space: nowrap;
@@ -455,6 +455,6 @@ footer {
 /* スマホでも文字が小さくなりすぎないよう調整 */
 @media (max-width: 600px) {
   .food-char {
-    font-size: 18px;
+    font-size: 14px;
   }
 }
