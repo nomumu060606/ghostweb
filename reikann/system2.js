@@ -107,7 +107,8 @@ window.addEventListener("DOMContentLoaded", function () {
   if (
     document.referrer &&
     (document.referrer.includes("result1.html") ||
-     document.referrer.includes("result2.html"))
+     document.referrer.includes("result2.html")||
+	document.referrer.includes("htmlrei.html"))
   ) {
     localStorage.removeItem("userProfile");
   }
@@ -144,6 +145,7 @@ window.addEventListener("DOMContentLoaded", function () {
     numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
   }
 });
+
 
 
 
