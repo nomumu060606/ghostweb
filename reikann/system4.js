@@ -157,6 +157,15 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   // === 問題5専用ロジック ===
   if (questionNumber === 5) {
     var validAnswers = ["39", "３９", "さんきゅう", "さんきゅー", "サンキュー", "サンキュウ"];
+	// 🔸「こたえろ」系入力の特別処理
+  var lowerInput = normalizedInput.toLowerCase(); // 小文字化で統一
+  var answerVariants = ["こたえろ", "答えろ", "コタエロ", "答えロ", "こたえロ"];
+
+  if (answerVariants.includes(lowerInput)) {
+    message.textContent = "答えろ";
+    message.classList.add("result-wrong");
+    return;
+  }
 
     // 全角数字→半角数字
     var normalized = normalizedInput.replace(/[０-９]/g, function (s) {
@@ -211,7 +220,6 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
       }, 500);
     }
 
-    document.getElementById("ans" + questionNumber).disabled = true;
   } else {
     // ❌ それ以外は不正解
     message.textContent = "（何か違うような気がする）";
@@ -225,16 +233,16 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
 // === 前ページからのデータを読み取ってメッセージを表示 ===
 window.addEventListener("DOMContentLoaded", function () {
+  var ref = document.referrer; // 前のページURL
   var params = new URLSearchParams(window.location.search);
   var dataParam = params.get("data");
   if (!dataParam) return;
 	
   // ✅ 「前ページがresult系」のときだけプロフリセット（リロードでは消さない）
   if (
-    document.referrer &&
-    (document.referrer.includes("result1.html") ||
-     document.referrer.includes("result2.html")||
-	document.referrer.includes("htmlrei.html"))
+    !ref.includes("htmlrei.html") &&
+    !ref.includes("result1.html") &&
+    !ref.includes("result2.html")
   ) {
     localStorage.removeItem("userProfile");
   }
