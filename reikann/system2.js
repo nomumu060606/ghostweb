@@ -24,18 +24,18 @@ function saveProfile(event) {
     message.textContent = "";
   }, 3000);
 
-  // ✅ クイズエリアを表示（5問すべて）
+  // ✅ クイズエリアを表示（6問すべて）
   var quizSection = document.getElementById("quizSection");
   quizSection.classList.remove("hidden");
   quizSection.classList.add("show");
 
-  for (var i = 1; i <= 5; i++) {
+  for (var i = 1; i <= 6; i++) {
     var q = document.getElementById("question" + i);
     if (q) q.classList.remove("hidden");
   }
 }
 
-var correctAnswers = [false, false, false, false, false];
+var correctAnswers = [false, false, false, false, false, false];
 
 // === 答えチェック ===
 function checkAnswerGeneric(event, questionNumber, correctAnswer) {
@@ -48,7 +48,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
   // ✅ retry=2 の時の答えセット
   if (retry === "2") {
-    var retryAnswers = ["しあい", "とりえ", "たかん", "ことば", "ありがとう"];
+    var retryAnswers = ["しあい", "とりえ", "たかん", "ことば", "ありがとう", "ありがとう"];
     correctAnswer = retryAnswers[questionNumber - 1];
   }
 
@@ -133,7 +133,7 @@ window.addEventListener("DOMContentLoaded", function () {
       quizSection.classList.remove("hidden");
       quizSection.classList.add("show");
 
-      for (var i = 1; i <= 5; i++) {
+      for (var i = 1; i <= 6; i++) {
         var q = document.getElementById("question" + i);
         if (q) q.classList.remove("hidden");
       }

@@ -141,7 +141,8 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
     2: ["とりこ", "とりえ"],
     3: ["たから", "たかん"],
     4: ["ことし", "ことば"],
-    5: ["ありがとう"]
+    5: ["ありがとう"],
+	6: [""]
   };
 
   // ✅ 特別誤答処理
@@ -156,16 +157,22 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
   // === 問題5専用ロジック ===
   if (questionNumber === 5) {
-    var validAnswers = ["39", "３９", "さんきゅう", "さんきゅー", "サンキュー", "サンキュウ"];
 	// 🔸「こたえろ」系入力の特別処理
   var lowerInput = normalizedInput.toLowerCase(); // 小文字化で統一
   var answerVariants = ["こたえろ", "答えろ", "コタエロ", "答えロ", "こたえロ"];
 
   if (answerVariants.includes(lowerInput)) {
-    message.textContent = "答えろ";
-    message.classList.add("result-wrong");
+     message.textContent = "（よし、なんだか合っていそう）";
+      message.classList.add("result-correct");
     return;
   }
+
+  }
+	
+  // === 問題5専用ロジック ===
+  if (questionNumber === 6) {
+    var validAnswers = ["39", "３９", "さんきゅう", "さんきゅー", "サンキュー", "サンキュウ"];
+	// 🔸「こたえろ」系入力の特別処理
 
     // 全角数字→半角数字
     var normalized = normalizedInput.replace(/[０-９]/g, function (s) {
@@ -264,7 +271,7 @@ window.addEventListener("DOMContentLoaded", function () {
       quizSection.classList.remove("hidden");
       quizSection.classList.add("show");
 
-      for (var i = 1; i <= 5; i++) {
+      for (var i = 1; i <= 6; i++) {
         var q = document.getElementById("question" + i);
         if (q) q.classList.remove("hidden");
       }

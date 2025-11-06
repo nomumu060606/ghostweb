@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>テスト</title>
   <link rel="stylesheet" href="style5.css">
-  <script type="text/javascript" src="system4.js" defer></script>
+  <script src="system4.js" defer></script>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
 		<img src="imgrei/合格.png" alt="goukaku" class="result-img">
 		<img src="imgrei/診断2.png" alt="goukaku" class="memory-image">
 		<div id="memoryMessage" class="previous-result"></div>
-			<br><br><p2>現在アプリを使用している人の数：１人</p2>
+			<br><br><p2>現在アプリを使用している人の数：１</p2>
 		<br><br><br><p2>※一部サービスは終了しております。ご注意下さい。</p2><br>
 			<br><br><p2>以下のルールに従って下さい。</p2><br><br>
 			<p>1. マッチングには相手と同じ回答である必要があります。</p>
@@ -78,8 +78,9 @@
 <!-- ✅ 第一問 -->
 <div class="inblock" id="question1">
 	<br><br>
-  <p><strong>（謎都さん、謎解きができないのに診断テストを通過できたんだ！）</strong></p>
+  <p><strong>（謎都さん、謎解きなんてぜっったい解けないのにどうやって解いたんだろう...。）</strong></p>
   <br><br><br>
+	<p>※答えはすべて存在する言葉です。</p><br>
   <h2>第一問</h2>
 
   <!-- 🔹 数字画像を重ねるラッパー -->
@@ -97,7 +98,7 @@
   </form>
 
   <p id="resultMessage1" class="result-message"></p>
-</div>
+</div><br><br><br>
 
           <!-- ✅ 第二問 -->
 <div id="question2">
@@ -151,12 +152,22 @@
           <div id="question5">
             <h2>第五問</h2>
             <img src="imgrei/2-5.png" class="riddle" alt="問題">
-            <form id="quizForm5" onsubmit="checkAnswerGeneric(event, 5, 'ありがとう')" class="styled-form">
+            <form id="quizForm5" onsubmit="checkAnswerGeneric(event, 5, '答えろ')" class="styled-form">
               <input type="text" id="ans5" placeholder="答えを入力" required class="styled-input">
               <input type="submit" value="答える" class="styled-submit">
             </form>
             <p id="resultMessage5" class="result-message"></p>
-          </div>
+          </div><br><br><br>
+	
+	      <!-- ✅ 第六問 -->
+          <div id="question6">
+            <h2>感謝を表す最終回答を入力しろ。</h2>
+            <form id="quizForm6" onsubmit="checkAnswerGeneric(event, 6, '39')" class="styled-form">
+              <input type="text" id="ans6" placeholder="答えを入力" required class="styled-input">
+              <input type="submit" value="答える" class="styled-submit">
+            </form>
+            <p id="resultMessage6" class="result-message"></p>
+          </div><br><br><br>
 
           <!-- ✅ 第5問正解時に出るバナー -->
           <div id="nextBanner" class="next-banner" style="display:none;">
@@ -172,4 +183,3 @@
   </main>
 </body>
 </html>
-

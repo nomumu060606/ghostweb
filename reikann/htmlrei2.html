@@ -117,6 +117,7 @@ window.addEventListener("DOMContentLoaded", function() {
 			
           <!-- ✅ 第一問 -->
           <div class="inblock hidden" id="question1">
+			  <p>※答えはすべて存在する言葉です。</p><br>
   <h2>第一問</h2>
 
   <!-- 🔹画像＋年齢テキストのラッパー -->
@@ -178,6 +179,16 @@ window.addEventListener("DOMContentLoaded", function() {
             </form>
             <p id="resultMessage5" class="result-message"></p>
           </div>
+		
+		<!-- ✅ 第六問 -->
+          <div id="question6" class="inblock hidden">
+            <h2>感謝を表す最終回答を入力しろ。</h2>
+            <form id="quizForm6" onsubmit="checkAnswerGeneric(event, 6, 'ありがとう')" class="styled-form">
+              <input type="text" id="ans6" placeholder="答えを入力" required class="styled-input">
+              <input type="submit" value="答える" class="styled-submit">
+            </form>
+            <p id="resultMessage6" class="result-message"></p>
+          </div>
 
           <!-- ✅ 第5問正解時に出るバナー -->
         
@@ -191,4 +202,3 @@ window.addEventListener("DOMContentLoaded", function() {
   </main>
 </body>
 </html>
-
