@@ -1,85 +1,90 @@
 /* 全体の基本設定 */
-*{
+* {
   padding: 0;
   margin: 0;
   text-align: center;
   font-family: serif;
   font-weight: bold;
+  box-sizing: border-box;
 }
 
 html, body {
   overflow-x: hidden;
-  background-color: #010000; /* ← ページ全体の背景も青に */
+  background-color: #010000;
 }
 
+/* メイン全体 */
 .main {
   width: 100%;
   background-color: #010000;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: scale(0.9); /* ← こちらに移動 */
-  transform-origin: top center;
 }
 
-/* 背景ブロック白色のところ */
-/* 背景ブロック */
+/* 白背景のブロック */
 .block {
-  width: 1000px;
-  max-width: 95%;
-  margin: 30px auto 30px;
-  padding: 50px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
   background-color: #FFFFFF;
+  border-radius: 8px;
 }
 
+/* プロフィール画像など */
 .profimg {
   width: 70%;
   max-width: 400px;
+  height: auto;
 }
 
-div {
-    display: block;
-    unicode-bidi: isolate;
+.hidden {
+  display: none;
 }
 
+/* テキスト部分 */
 .inblock {
-    margin: 50px auto 100px auto;
-	color: #010000;
+  color: #010000;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
-.selectarea{
+.selectarea {
   width: 550px;
+  max-width: 95%;
   margin: 10px auto;
   padding: 10px;
   background-color: lightgray;
   border-radius: 30px;
 }
 
-.text{
+.text {
   margin: auto;
   font-size: 40px;
   font-weight: bold;
 }
 
-img.riddle{
-  margin: 0 auto;
-  width: 700px;
+/* 問題画像 */
+img.riddle {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
   border: solid 5px black;
   border-radius: 20px;
+  margin: 0 auto;
+  display: block;
 }
 
-img.select{
-  margin: 10px 10px;
+/* 選択肢 */
+img.select,
+img.selected {
+  margin: 10px;
   width: 80px;
   cursor: pointer;
 }
 
-img.selected{
-  margin: 10px 10px;
-  width: 80px;
-}
-
-.button{
+.button {
   width: 250px;
   height: 70px;
   font-size: 45px;
@@ -87,140 +92,17 @@ img.selected{
   cursor: pointer;
 }
 
-.message{
+.message {
   font-size: 25px;
   font-weight: bold;
   color: #010000;
 }
 
-.tweetArea{
+.tweetArea {
   margin: 30px;
 }
 
-form{
-  ;
-}
-#focus{
-  border:3px solid #fef6fb;
-  box-shadow:0 0 10px 0 #D09B52;
-  position:absolute;
-  transition:
-    width .2s ease, 
-    height .2s ease, 
-    left .2s ease, 
-    top .2s ease, 
-    border-radius .2s ease;
-  pointer-events:none;
-  z-index:5;
-  border-radius:10px;
-  display:none;
-}
-
-
-
-
-
-/* ヘッダー */
-header {
-  text-align: center;
-  background-color: #FCFCFC;
-  color: black;
-  padding: 10px 20px;
-}
-
-header h1 {
-  margin-bottom: 0px;
-}
-
-/* コンテンツ全体 */
-.content {
-  max-width: 900px;    /* 横幅を少し狭めて中央に配置 */
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-/* 各セクション（画像＋テキスト） */
-.item {
-  text-align: center;
-  background-color: #fff;
-  padding: 30px;
-  margin-bottom: 40px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-/* 画像 */
-.item img {
-  width: 100%;         /* 画面幅に合わせて自動で縮小 */
-  height: auto;
-  max-width: 1280px;   /* 元のサイズより大きくならないように制限 */
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-/* 見出しと文章 */
-.item h2 {
-  color: #010000;
-  margin-bottom: 10px;
-}
-
-.item p {
-  line-height: 1.8;
-  font-size: 30px;
-}
-/* 謎解きマッチング説明 */
-.kuroshiro {
-background-color: black; /* 背景色を黄色に設定 */
-color: white; /* 文字色を黒に設定 */
-padding: 0px; /* 余白を追加 */
-}
-
-/* 選択肢画像の横並び */
-.choices {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 20px;
-  flex-wrap: wrap; /* 小さい画面では折り返す */
-}
-
-.choice {
-  flex: 1 1 5%;      /* 最小幅18%で5枚並べる */
-  max-width: 150px;   /* 画像の最大幅を制限 */
-  aspect-ratio: 1/1;  /* 正方形を維持 */
-  cursor: pointer;
-  border: 2px solid transparent;
-  border-radius: 5px;
-  transition: transform 0.2s, border-color 0.2s;
-}
-
-.choice:hover {
-  transform: scale(1.05);
-  border-color: #4a90e2;
-}
-
-/* スマホ対応 */
-@media (max-width : 810px ){
-  .choices {
-    overflow-x: auto;      /* 横スクロール */
-  }
-  .choice {
-    flex: 0 0 120px;       /* 固定幅にしてスクロール可能 */
-    max-width: none;       /* スマホでは最大幅制限を外す */
-  }
-}
-
-
-/* フッター */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #eee;
-  color: #666;
-}
-
-✅ 追加CSS（style2.cssの末尾に貼る）
-/* ==== 入力フォームをスタイリッシュに ==== */
+/* ==== 入力フォーム ==== */
 .styled-form {
   display: flex;
   flex-direction: column;
@@ -230,9 +112,8 @@ footer {
   max-width: 400px;
 }
 
-/* 入力欄（下線のみ） */
 .styled-input {
-  width: 40%;
+  width: 80%;
   padding: 10px 5px;
   font-size: 18px;
   border: none;
@@ -248,13 +129,11 @@ footer {
   color: #aaa;
 }
 
-/* フォーカス時（アニメーションで色変化） */
 .styled-input:focus {
   border-bottom: 2px solid #010000;
   box-shadow: 0 2px 0 0 #010000;
 }
 
-/* 送信ボタン */
 .styled-submit {
   padding: 10px 30px;
   font-size: 18px;
@@ -271,26 +150,15 @@ footer {
   transform: translateY(-2px);
 }
 
-.styled-submit:active {
-  transform: translateY(0);
-}
-#resultMessage {
-  font-size: 22px;
-  margin-top: 15px;
+/* 結果メッセージ */
+.result-message {
+  font-size: 28px;
   font-weight: bold;
-  text-align: center;
+  margin-top: 15px;
   transition: all 0.3s ease;
 }
 
-
-.result-message {
-  font-size: 28px;       /* 大きく見やすく */
-  font-weight: bold;     /* 太字で強調 */
-  margin-top: 15px;      /* 入力欄との間に余白 */
-  transition: all 0.3s ease; /* フェードなどの効果に滑らかさ */
-}
-
-/* ==== 次へのバナー ==== */
+/* 次へのバナー */
 .next-banner {
   text-align: center;
   margin-top: 60px;
@@ -307,6 +175,7 @@ footer {
 
 .banner-img {
   width: 400px;
+  max-width: 90%;
   cursor: pointer;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -317,18 +186,7 @@ footer {
   transform: scale(1.05);
 }
 
-.hidden {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-/* 表示時にふわっと出る */
-.show {
-  display: block; /* ←これを追加するのがポイント！ */
-  opacity: 1;
-}
-
+/* プロフィール設定フォーム */
 .profile-setup {
   background-color: rgba(255, 255, 255, 0.9);
   border: 2px solid #ccc;
@@ -340,121 +198,115 @@ footer {
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-.profile-setup h2 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
 .profile-setup label {
   display: block;
   margin-bottom: 10px;
 }
 
-.saved-message {
-  color: black;
-  text-align: center;
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-/* 画像と文字を重ねるためのベース */
-.question-image-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-/* 年齢の数字スタイル（共通） */
-.age-digit {
-  position: absolute;
-  color: red;
-  font-size: 1.5em;
-  font-weight: bold;
-  pointer-events: none;
-}
-
-/* 🔹1桁目と2桁目の位置（調整OK） */
-#overlayDigit1 {
-  top: 24.5%;   /* 縦位置 */
-  left: 65%;  /* 横位置 */
-}
-
-#overlayDigit2 {
-  top: 60.5%;
-  left: 44%;
-}
-
-
-
-/* ベース画像の枠 */
+/* 問題画像に文字を重ねる */
+.question-image-wrapper,
 .name-overlay-wrapper {
-  position: relative;
-  display: inline-block;
-  width: 90%;        /* 画面に応じて縮小する */
-  max-width: 700px;  /* PC時の最大幅 */
-}
-
-/* 画像本体 */
-.name-overlay-wrapper img {
-  width: 100%;       /* 親要素にフィット */
-  height: auto;
-  display: block;
-}
-
-/* 名前の文字（位置は%指定） */
-.name-overlay {
-  position: absolute;
-  top: 20%;          /* 縦の位置 → 画像の高さに対する割合 */
-  left: 15.5%;         /* 横の位置 → 画像の幅に対する割合 */
-  color: red;
-  font-family: "BIZ UD明朝 Medium", "BIZ UDMincho Medium", serif;
-  font-size: 1.3em;  /* ✅ 画面幅に比例して文字サイズを変化 */
-  font-weight: 500;
-  text-align: left;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-
-
-/* 画像と文字の重ね合わせベース */
-.question-image-wrapper {
   position: relative;
   display: inline-block;
   width: 90%;
   max-width: 700px;
 }
 
-/* 画像本体 */
-.question-image-wrapper img {
+.name-overlay-wrapper img {
   width: 100%;
   height: auto;
-  display: block;
 }
 
-/* 嫌いな食べ物の文字（共通設定） */
+.name-overlay {
+  position: absolute;
+  top: 19%;
+  left: 15.5%;
+  color: red;
+  font-size: 1.5em;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* 食べ物文字の重ね */
 .food-char {
   position: absolute;
   color: red;
-  font-family: "BIZ UD明朝 Medium", "BIZ UDMincho Medium", serif;
-  font-size: 1em;   /* 画面幅に比例して拡縮 */
+  font-size: 1em;
   font-weight: 600;
   pointer-events: none;
 }
 
-/* ✅1文字目と2文字目の位置（画像比率で指定） */
-#overlayFood1 {
-  top: 24%;   /* ← 画像の高さに対しての割合 */
-  left: 15%;  /* ← 画像の幅に対しての割合 */
+#overlayFood1 { top: 22%; left: 13%; }
+#overlayFood2 { top: 28%; left: 50%; }
+
+/* === 第一問 年齢数字オーバーレイ設定 === */
+.age-digit {
+  position: absolute;
+  width: 8%;             /* 数字画像の大きさを調整 */
+  max-width: 60px;
+  height: auto;
+  pointer-events: none;
 }
 
-#overlayFood2 {
-  top: 30%;   /* ← 画像の高さに対しての割合 */
-  left: 50%;  /* ← 画像の幅に対しての割合 */
+/* 一桁目の位置（例） */
+#overlayDigit1 {
+  top: 58.5%;   /* 画像高さに対する位置 */
+  left: 40%;  /* 画像の幅に対する位置 */
 }
 
-/* スマホでも文字が小さくなりすぎないよう調整 */
-@media (max-width: 600px) {
-  .food-char {
-    font-size: 14px;
+/* 二桁目の位置（例） */
+#overlayDigit2 {
+  top: 23%;
+  left: 61.3%;
+}
+
+.memory-image {
+  max-width: 80%;
+  height: auto;
+}
+
+/* ==== スマホ最適化 ==== */
+@media (max-width: 768px) {
+
+  .block {
+    width: 98%;
+    padding: 5px;
+  }
+
+  img.riddle {
+    width: 100%;
+    height: auto;
+    border-width: 3px;
+  }
+	.name-overlay {
+    font-size: 0.6em; /* ← スマホでの文字縮小 */
+  }
+	.food-char {
+    font-size: 0.6em; /* ← スマホでの文字縮小 */
+  }
+
+  .profimg {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .styled-input {
+    width: 90%;
+    font-size: 16px;
+  }
+
+  .styled-submit {
+    font-size: 16px;
+    padding: 8px 24px;
+  }
+
+  .banner-img {
+    width: 80%;
+    max-width: 280px;
+  }
+
+  .result-message {
+    font-size: 22px;
   }
 }

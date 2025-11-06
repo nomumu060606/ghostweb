@@ -68,11 +68,15 @@ function updateAgeDigits(ageText) {
 
   if (match) {
     var digits = match[1].split(""); // ["2","0"]など
-    overlay1.textContent = digits[0];
-    overlay2.textContent = digits[1];
+    overlay1.src = "imgrei/" + digits[0] + ".png";
+    overlay2.src = "imgrei/" + digits[1] + ".png";
+    overlay1.style.display = "block";
+    overlay2.style.display = "block";
   } else {
-    overlay1.textContent = "";
-    overlay2.textContent = "";
+    overlay1.src = "";
+    overlay2.src = "";
+    overlay1.style.display = "none";
+    overlay2.style.display = "none";
   }
 }
 
@@ -224,41 +228,43 @@ window.addEventListener("DOMContentLoaded", function () {
   var params = new URLSearchParams(window.location.search);
   var dataParam = params.get("data");
   if (!dataParam) return;
-
-  try {
-    var decoded = decodeURIComponent(dataParam);
-    var resultData = JSON.parse(decoded);
-    var key = resultData.key || "";
-    var answers = resultData.answers || [];
-
-    // --- 表示するメッセージを決定 ---
-    var msg = "";
-    if (key === "41") {
-      msg = "あなたはとても慎重な人間のようですね。";
-    } else if (key === "43") {
-      msg = "あなたはとても屈強な人間のようですね。";
-    } else if (key === "44") {
-      msg = "あなたはとても信仰深い人間のようですね。";
-    } else if (key === "45") {
-      msg = "あなたは恐れ知らずな人間のようですね。";
-    } else if (key === "52") {
-      msg = "ようこそ霊のあなたをサポートいたします。";
-    }
-
-    // --- メッセージを表示 ---
-    if (msg !== "") {
-      var memoryDiv = document.getElementById("memoryMessage");
-      if (memoryDiv) {
-        memoryDiv.textContent = msg;
-        setTimeout(function () {
-          memoryDiv.classList.add("show");
-        }, 100);
-      }
-    }
-
-  } catch (e) {
-    console.error("データの解析に失敗:", e);
+	
+  // ✅ 「前ページがresult系」のときだけプロフリセット（リロードでは消さない）
+  if (
+    document.referrer &&
+    (document.referrer.includes("result1.html") ||
+     document.referrer.includes("result2.html")||
+	document.referrer.includes("htmlrei.html"))
+  ) {
+    localStorage.removeItem("userProfile");
   }
+
+  var profile = localStorage.getItem("userProfile");
+  var quizSection = document.getElementById("quizSection");
+
+  if (!profile) {
+    // 🔹 プロフィール未登録 → クイズ非表示
+    quizSection.classList.add("hidden");
+  } else {
+    // 🔹 プロフィールあり → 復元してクイズ全表示
+    try {
+      var data = JSON.parse(profile);
+      document.getElementById("profileName").value = data.name || "";
+      document.getElementById("profileAge").value = data.age || "";
+      document.getElementById("profileFood").value = data.food || "";
+
+      quizSection.classList.remove("hidden");
+      quizSection.classList.add("show");
+
+      for (var i = 1; i <= 5; i++) {
+        var q = document.getElementById("question" + i);
+        if (q) q.classList.remove("hidden");
+      }
+    } catch (e) {
+      console.error("プロファイル読み込みエラー:", e);
+    }
+  }
+
 });
 
 // === 嫌いな食べ物の1・2文字目を画像に表示 ===

@@ -14,6 +14,7 @@
       <div class="block">
         <div class="inblock">
 		<img src="imgrei/合格.png" alt="goukaku" class="result-img">
+		<img src="imgrei/診断2.png" alt="goukaku" class="memory-image">
 		<div id="memoryMessage" class="previous-result"></div>
 		<br><br><br><p2>※一部サービスは終了しております。ご注意下さい。</p2><br>
 			<br><br><p2>以下のルールに従って下さい。</p2><br><br>
@@ -66,25 +67,26 @@
 
   <p id="profileSavedMessage" class="saved-message"></p>
 </div>
-<div id="quizSection" class="show">
+<div id="quizSection" class="hidden">
           <div class="intro">
 			  <br><br><br><br><br><br><br><br>
             <img src="imgrei/マッチング候補発見.png" alt="タイトル画像" class = "profimg"><br>
             <img src="imgrei/プロフ 2.png" alt="プロフィール画像" class = "profimg">
           </div>
 			
-          <!-- ✅ 第一問 -->
+<!-- ✅ 第一問 -->
 <div class="inblock" id="question1">
-	<p>（よし、謎都さんとマッチングしたぞ。ただ、この人は謎が解けない。何と答えるのだろうか...。）</p>
-	<br><br><br>
+  <p>（よし、謎都さんとマッチングしたぞ。ただ、この人は謎が解けない。何と答えるのだろうか...。）</p>
+  <br><br><br>
   <h2>第一問</h2>
 
-  <!-- 画像＋数字2文字のラッパー -->
+  <!-- 🔹 数字画像を重ねるラッパー -->
   <div class="question-image-wrapper">
     <img src="imgrei/2-1.png" class="riddle" alt="問題">
-    <!-- 🔹一桁目・二桁目を別々に配置 -->
-    <div class="age-digit" id="overlayDigit1"></div>
-    <div class="age-digit" id="overlayDigit2"></div>
+
+    <!-- 年齢の十の位と一の位の数字画像を重ねる -->
+    <img id="overlayDigit1" class="age-digit" alt="">
+    <img id="overlayDigit2" class="age-digit" alt="">
   </div>
 
   <form id="quizForm1" onsubmit="checkAnswerGeneric(event, 1, 'いあい')" class="styled-form">
