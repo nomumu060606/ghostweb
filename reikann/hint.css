@@ -1,0 +1,63 @@
+body {
+background: #3E3A39;
+font-family:sans-serif;
+}
+
+
+.main {
+display: block;
+background: #3E3A39;
+color: #ffffff;
+}
+
+.bun {
+margin-top: 5%;
+margin-bottom: 5%;
+text-align: center;
+}
+
+.one {
+margin-top: -10px;
+background: #6e6b6b;
+color: #ffffff;
+text-align: center;
+}
+
+.oneb {
+background: #6e6b6b;
+color: #ffffff;
+text-align: center;
+}
+
+.hint  {
+display: none;
+}
+
+.hint.selected  {
+display: block;
+}
+
+.main-title {
+margin-top: -10px;
+background: #fafafa;
+color: #000000;
+}
+
+.title {
+margin-top: -16px;
+background: #d7d6d6;
+color: #000000;
+}
+
+.three {
+margin-top: -16px;
+background: #ebebeb;
+color: #000000;
+text-align: center;
+}
+
+div.box {
+display: none;
+}
+
+
