@@ -240,9 +240,9 @@ window.addEventListener("DOMContentLoaded", function () {
 	
   // ✅ 「前ページがresult系」のときだけプロフリセット（リロードでは消さない）
   if (
-    !ref.includes("htmlrei.html") &&
-    !ref.includes("result1.html") &&
-    !ref.includes("result2.html")
+    ref.includes("htmlrei.html") ||
+    ref.includes("result1.html") ||
+    ref.includes("result2.html")
   ) {
     localStorage.removeItem("userProfile");
   }
