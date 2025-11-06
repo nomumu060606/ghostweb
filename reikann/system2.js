@@ -100,15 +100,18 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
 // === ページ読み込み時 ===
 window.addEventListener("DOMContentLoaded", function () {
+  var ref = document.referrer; // 前のページURL
+
+  // ✅ 「前ページが htmlrei2 / result1 / result2 以外」ならリセット
+  
   var params = new URLSearchParams(window.location.search);
   var retry = params.get("retry");
 
   // ✅ 「前ページがresult系」のときだけプロフリセット（リロードでは消さない）
   if (
-    document.referrer &&
-    (document.referrer.includes("result1.html") ||
-     document.referrer.includes("result2.html")||
-	document.referrer.includes("htmlrei.html"))
+    !ref.includes("htmlrei2.html") &&
+    !ref.includes("result1.html") &&
+    !ref.includes("result2.html")
   ) {
     localStorage.removeItem("userProfile");
   }
@@ -145,8 +148,5 @@ window.addEventListener("DOMContentLoaded", function () {
     numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
   }
 });
-
-
-
 
 
