@@ -10,10 +10,12 @@
       font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
       background: #f3f3f3;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       padding: 20px;
+      gap: 20px;
     }
 
     .letter {
@@ -26,9 +28,8 @@
       padding: 30px;
       position: relative;
     }
-	  .red{
-		 color:red;
-		}
+
+    .red { color: red; }
 
     .letter header {
       display: flex;
@@ -60,9 +61,46 @@
       font-size: 12px;
       letter-spacing: 1px;
     }
-	  .img{
-		  border: 3px solid #000000; /* 赤色の5ピクセルの実線枠線 */
-	  }
+
+    .img {
+        max-width: 800px;
+		  width:80% ;
+      }
+
+    .tweet-btn {
+      display: inline-block;
+      background: #1da1f2;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .tweet-btn:hover {
+      background: #0c85d0;
+    }
+
+    .clear-section {
+      text-align: center;
+    }
+	  .post-btn {
+      display: inline-block;
+      background: #000;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .post-btn:hover {
+      background: #333;
+    }
 
     @media (max-width: 600px) {
       .letter {
@@ -75,10 +113,12 @@
         right: 14px;
         bottom: 14px;
       }
-		
+      .img {
+        max-width: 600px;
+		  width:80% ;
+      }
     }
   </style>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
   <div class="letter">
@@ -87,14 +127,35 @@
     </header>
 
     <div class="letter-body">
-      <p>くりあ</p>
+      <p>そうか...。</p>
+      <p>そんなことがあったんだな。報告ありがとう。</p>
+      <p>にしても君がマイさんだったなんて。</p>
+      <p>... ...</p>
+      <p>もっと詳しい話を聞きたいことだし、どうだい？今週末にお茶でも。</p>
     </div>
 
     <div class="stamp">CONFIDENTIAL</div>
-	  <a href="https://nomumu060606.github.io/ghostweb/reikann/htmlrei">
-      <img src="imgrei/バナー.png" alt="バナー" class = "img">
-    </a>
   </div>
-	
+
+  <!-- 🔽 クリア画像＋ツイートボタン部分 -->
+  <div class="clear-section">
+	  <br><h3>無事に運命の人とマッチングした！<br><br>下のボタンから感想をポストできます。<br>※クリア画像は投稿可能です。</h3>
+	  
+    <img src="imgrei/クリア.png" class="img" alt="クリア画像" />
+
+    <br>
+
+    <!-- ✅ Xポストボタン -->
+    <a
+      href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+      class="post-btn"
+      data-text="夕立にかさなって持ち帰り謎「Rains」/n &quot;霊&quot;『霊感がある方を探しています。』/nをクリアした！/n/n"
+	  data-hashtags="夕立RA "
+	  data-show-count="false"
+    >
+      感想をポストする
+    </a>
+
+  </div>
 </body>
 </html>
