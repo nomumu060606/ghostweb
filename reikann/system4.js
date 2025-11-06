@@ -32,6 +32,10 @@ function saveProfile(event) {
     quizSection.classList.remove("hidden");
     quizSection.classList.add("show");
   }
+document.querySelectorAll('[id^="resultMessage"]').forEach(msg => {
+    msg.textContent = "";
+    msg.classList.remove("result-correct", "result-wrong");
+  });
 }
 
 // === ページ読み込み時 ===
@@ -256,3 +260,4 @@ function updateFoodChars(foodText) {
   }
 
 }
+
