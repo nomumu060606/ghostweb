@@ -237,51 +237,6 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
 
 
-
-// === 前ページからのデータを読み取ってメッセージを表示 ===
-window.addEventListener("DOMContentLoaded", function () {
-  var ref = document.referrer; // 前のページURL
-  var params = new URLSearchParams(window.location.search);
-  var dataParam = params.get("data");
-  if (!dataParam) return;
-	
-  // ✅ 「前ページがresult系」のときだけプロフリセット（リロードでは消さない）
-  if (
-    ref.includes("htmlrei.html") ||
-    ref.includes("result1.html") ||
-    ref.includes("result2.html")
-  ) {
-    localStorage.removeItem("userProfile");
-  }
-
-  var profile = localStorage.getItem("userProfile");
-  var quizSection = document.getElementById("quizSection");
-
-  if (!profile) {
-    // 🔹 プロフィール未登録 → クイズ非表示
-    quizSection.classList.add("hidden");
-  } else {
-    // 🔹 プロフィールあり → 復元してクイズ全表示
-    try {
-      var data = JSON.parse(profile);
-      document.getElementById("profileName").value = data.name || "";
-      document.getElementById("profileAge").value = data.age || "";
-      document.getElementById("profileFood").value = data.food || "";
-
-      quizSection.classList.remove("hidden");
-      quizSection.classList.add("show");
-
-      for (var i = 1; i <= 6; i++) {
-        var q = document.getElementById("question" + i);
-        if (q) q.classList.remove("hidden");
-      }
-    } catch (e) {
-      console.error("プロファイル読み込みエラー:", e);
-    }
-  }
-
-});
-
 // === 嫌いな食べ物の1・2文字目を画像に表示 ===
 function updateFoodChars(foodText) {
   var overlay1 = document.getElementById("overlayFood1");
@@ -299,4 +254,5 @@ function updateFoodChars(foodText) {
     overlay1.textContent = "";
     overlay2.textContent = "";
   }
+
 }
