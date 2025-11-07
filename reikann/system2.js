@@ -23,10 +23,11 @@ function saveProfile(event) {
   var retry = params.get("retry");
 
   if (retry === "2") {
-    const profImg = document.querySelector("img.profimg[src='imgrei/霊感募集プロフ2.png']");
+    var profImg = document.querySelector("img.profimg[src='imgrei/霊感募集プロフ2.png']");
     if (profImg) {
       profImg.src = "imgrei/霊感募集プロフ2-2.png";
       console.log("retry=2 のため、プロフィール画像を差し替えました。");
+  }
   }
 
   message.textContent = "✅ プロフィールを保存しました！";
@@ -122,40 +123,10 @@ window.addEventListener("DOMContentLoaded", function () {
   var params = new URLSearchParams(window.location.search);
   var retry = params.get("retry");
 
-  // ✅ 「前ページがresult系」のときだけプロフリセット（リロードでは消さない）
-  if (
-    !ref.includes("htmlrei2.html") &&
-    !ref.includes("result1.html") &&
-    !ref.includes("result2.html")
-  ) {
-    localStorage.removeItem("userProfile");
-  }
 
   var profile = localStorage.getItem("userProfile");
   var quizSection = document.getElementById("quizSection");
 
-  if (!profile) {
-    // 🔹 プロフィール未登録 → クイズ非表示
-    quizSection.classList.add("hidden");
-  } else {
-    // 🔹 プロフィールあり → 復元してクイズ全表示
-    try {
-      var data = JSON.parse(profile);
-      document.getElementById("profileName").value = data.name || "";
-      document.getElementById("profileAge").value = data.age || "";
-      document.getElementById("profileFood").value = data.food || "";
-
-      quizSection.classList.remove("hidden");
-      quizSection.classList.add("show");
-
-      for (var i = 1; i <= 6; i++) {
-        var q = document.getElementById("question" + i);
-        if (q) q.classList.remove("hidden");
-      }
-    } catch (e) {
-      console.error("プロファイル読み込みエラー:", e);
-    }
-  }
 
   // ✅ retry=2メッセージ
   var numMessage = document.getElementById("numMessage");
@@ -163,6 +134,7 @@ window.addEventListener("DOMContentLoaded", function () {
     numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
   }
 });
+
 
 
 
