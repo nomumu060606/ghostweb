@@ -48,6 +48,22 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
+<script>
+// === retryパラメータによって画像を切り替え ===
+window.addEventListener("DOMContentLoaded", function() {
+  const params = new URLSearchParams(window.location.search);
+  const retry = params.get("retry");
+
+  if (retry === "2") {
+    const profImg = document.querySelector("img.profimg[src='imgrei/霊感募集プロフ2.png']");
+    if (profImg) {
+      profImg.src = "imgrei/霊感募集プロフ2-2.png";
+      console.log("retry=2 のため、プロフィール画像を差し替えました。");
+    }
+  }
+});
+</script>
+	
 <body>
 
 
@@ -203,6 +219,7 @@ window.addEventListener("DOMContentLoaded", function() {
   </main>
 </body>
 </html>
+
 
 
 
