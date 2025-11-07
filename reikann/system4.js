@@ -199,7 +199,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
     var foodOK = profile && profile.food === "なす";
     var ageOK = profile && profile.age === "40代";
 
-    if (isValidAnswer && nameOK && foodOK && ageOK && orrectAnswers.every(Boolean)) {
+    if (isValidAnswer && nameOK && foodOK && ageOK && correctAnswers.every(Boolean)) {
       // ✅ 条件完全一致：正解
       message.textContent = "（よし、なんだか合っていそう）";
 		correctAnswers[questionNumber - 1] = true;
@@ -271,6 +271,7 @@ function updateFoodChars(foodText) {
   }
 
 }
+
 
 
 
