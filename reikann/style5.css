@@ -265,8 +265,8 @@ img.selected {
 
 /* 二桁目の位置（例） */
 #overlayDigit2 {
-  top: 23%;
-  left: 61.3%;
+  top: 27%;
+  left: 63.4%;
 }
 
 .memory-image {
@@ -318,6 +318,7 @@ img.selected {
     font-size: 22px;
   }
 }
+
 
 
 
