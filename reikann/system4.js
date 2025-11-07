@@ -239,7 +239,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
     // ❌ それ以外は不正解
     message.textContent = "（何か違うような気がする）";
     message.classList.add("result-wrong");
-	  message2.textContent = ””;
+	  message2.textContent ="";
   }
 }
 
