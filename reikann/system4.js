@@ -25,6 +25,7 @@ function saveProfile(event) {
 
   message.textContent = "✅ プロフィールを保存しました！";
   setTimeout(function() { message.textContent = ""; }, 3000);
+  var correctAnswers = [false, false, false, false, false];
 
   // ✅ プロフィール保存後、クイズ全体を表示
   var quizSection = document.getElementById("quizSection");
@@ -169,6 +170,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
   if (answerVariants.includes(lowerInput)) {
      message.textContent = "（よし、なんだか合っていそう）";
+	  correctAnswers[questionNumber - 1] = true;
       message.classList.add("result-correct");
 	  message2.textContent = correctAnswer;
     return;
@@ -179,6 +181,8 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   // === 問題5専用ロジック ===
   if (questionNumber === 6) {
     var validAnswers = ["39", "３９", "さんきゅう", "さんきゅー", "サンキュー", "サンキュウ"];
+	  
+	  
 	// 🔸「こたえろ」系入力の特別処理
 
     // 全角数字→半角数字
@@ -195,9 +199,10 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
     var foodOK = profile && profile.food === "なす";
     var ageOK = profile && profile.age === "40代";
 
-    if (isValidAnswer && nameOK && foodOK && ageOK) {
+    if (isValidAnswer && nameOK && foodOK && ageOK && orrectAnswers.every(Boolean)) {
       // ✅ 条件完全一致：正解
       message.textContent = "（よし、なんだか合っていそう）";
+		correctAnswers[questionNumber - 1] = true;
       message.classList.add("result-correct");
 
       // バナー表示
@@ -220,6 +225,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   // === 通常正解処理 ===
   if (normalizedInput === correctAnswer) {
     message.textContent = "（よし、なんだか合っていそう）";
+	  correctAnswers[questionNumber - 1] = true;
     message.classList.add("result-correct");
 	  message2.textContent = correctAnswer;
 
@@ -265,5 +271,6 @@ function updateFoodChars(foodText) {
   }
 
 }
+
 
 
