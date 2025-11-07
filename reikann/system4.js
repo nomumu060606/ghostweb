@@ -99,6 +99,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
   var userInput = document.getElementById("ans" + questionNumber).value.trim();
   var message = document.getElementById("resultMessage" + questionNumber);
+	var message2 = document.getElementById("resultMessage2" + questionNumber);
   var nextQuestion = document.getElementById("question" + (questionNumber + 1));
   var nextBanner = document.getElementById("nextBanner");
 
@@ -156,6 +157,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   ) {
     message.textContent = "（謎都さんはこう答えないだろう...）";
     message.classList.add("result-wrong");
+	  message2.textContent = "";
     return;
   }
 
@@ -168,6 +170,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   if (answerVariants.includes(lowerInput)) {
      message.textContent = "（よし、なんだか合っていそう）";
       message.classList.add("result-correct");
+	  message2.textContent = correctAnswer;
     return;
   }
 
@@ -218,6 +221,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   if (normalizedInput === correctAnswer) {
     message.textContent = "（よし、なんだか合っていそう）";
     message.classList.add("result-correct");
+	  message2.textContent = correctAnswer;
 
     if (nextQuestion) {
       setTimeout(function () {
@@ -235,6 +239,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
     // ❌ それ以外は不正解
     message.textContent = "（何か違うような気がする）";
     message.classList.add("result-wrong");
+	  message2.textContent = ””;
   }
 }
 
@@ -260,4 +265,5 @@ function updateFoodChars(foodText) {
   }
 
 }
+
 
