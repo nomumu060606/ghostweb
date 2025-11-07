@@ -68,6 +68,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   ) {
     message.textContent = "（ゆうさんは何と答えたのだろうか）";
     message.classList.add("result-wrong");
+    message2.textContent = "";
     return; // ✅ 他の処理をスキップ
   }
 
@@ -97,6 +98,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   } else {
     message.textContent = "（何か違うような気がする）";
     message.classList.add("result-wrong");
+    message2.textContent = "";
   }
 }
 
@@ -151,6 +153,7 @@ window.addEventListener("DOMContentLoaded", function () {
     numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
   }
 });
+
 
 
 
