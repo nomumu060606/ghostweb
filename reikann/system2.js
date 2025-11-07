@@ -19,6 +19,16 @@ function saveProfile(event) {
   var profile = { name: name, age: age, food: food };
   localStorage.setItem("userProfile", JSON.stringify(profile));
 
+  var params = new URLSearchParams(window.location.search);
+  var retry = params.get("retry");
+
+  if (retry === "2") {
+    const profImg = document.querySelector("img.profimg[src='imgrei/霊感募集プロフ2.png']");
+    if (profImg) {
+      profImg.src = "imgrei/霊感募集プロフ2-2.png";
+      console.log("retry=2 のため、プロフィール画像を差し替えました。");
+  }
+
   message.textContent = "✅ プロフィールを保存しました！";
   setTimeout(function () {
     message.textContent = "";
@@ -153,6 +163,7 @@ window.addEventListener("DOMContentLoaded", function () {
     numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
   }
 });
+
 
 
 
