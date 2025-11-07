@@ -79,6 +79,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
     message.classList.add("result-correct");
     correctAnswers[questionNumber - 1] = true;
     document.getElementById("ans" + questionNumber).disabled = true;
+    console.log(correctAnswers);
 
     // ✅ 全問正解チェック
     if (correctAnswers.every(Boolean)) {
