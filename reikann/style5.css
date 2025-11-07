@@ -251,7 +251,7 @@ img.selected {
 /* === 第一問 年齢数字オーバーレイ設定 === */
 .age-digit {
   position: absolute;
-  width: 6%;             /* 数字画像の大きさを調整 */
+  width: 4%;             /* 数字画像の大きさを調整 */
   max-width: 60px;
   height: auto;
   pointer-events: none;
@@ -259,8 +259,8 @@ img.selected {
 
 /* 一桁目の位置（例） */
 #overlayDigit1 {
-  top: 58.5%;   /* 画像高さに対する位置 */
-  left: 40%;  /* 画像の幅に対する位置 */
+  top: 62%;   /* 画像高さに対する位置 */
+  left: 42.5%;  /* 画像の幅に対する位置 */
 }
 
 /* 二桁目の位置（例） */
@@ -318,5 +318,6 @@ img.selected {
     font-size: 22px;
   }
 }
+
 
 
