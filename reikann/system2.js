@@ -91,7 +91,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
         nextImg.setAttribute("onclick", "window.location.href='result1.html'");
       }
 
-      nextBanner.style.display = "block";
+      nextBanner.style.display = "block"; nextBanner.style.opacity = "1";
       nextBanner.classList.add("show");
       message.textContent = "（……どうやら、全て正しく解けたようだ）";
     }
@@ -153,6 +153,7 @@ window.addEventListener("DOMContentLoaded", function () {
     numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
   }
 });
+
 
 
 
