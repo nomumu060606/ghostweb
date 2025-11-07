@@ -43,6 +43,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
 
   var userInput = document.getElementById("ans" + questionNumber).value.trim();
   var message = document.getElementById("resultMessage" + questionNumber);
+  var message2 = document.getElementById("resultMessage2" + questionNumber);
   var params = new URLSearchParams(window.location.search);
   var retry = params.get("retry");
 
@@ -53,6 +54,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   }
 
   message.classList.remove("result-correct", "result-wrong");
+  
 
   // ✅ retry=2かつ「前回の正解（いあい・とりこ・たから・ことし）」を入力した場合
   if (
@@ -72,6 +74,7 @@ function checkAnswerGeneric(event, questionNumber, correctAnswer) {
   // ✅ 通常の正解処理
   if (userInput === correctAnswer) {
     message.textContent = "（よし、なんだか合っていそう）";
+    message2.textContent = correctAnswer;
     message.classList.add("result-correct");
     correctAnswers[questionNumber - 1] = true;
     document.getElementById("ans" + questionNumber).disabled = true;
@@ -148,5 +151,6 @@ window.addEventListener("DOMContentLoaded", function () {
     numMessage.textContent = "（二度目の挑戦。今度こそ正しい答えを…）";
   }
 });
+
 
 
