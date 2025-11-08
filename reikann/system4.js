@@ -1,3 +1,5 @@
+var correctAnswers = [false, false, false, false, false];
+
 function saveProfile(event) {
   event.preventDefault();
 
@@ -25,7 +27,6 @@ function saveProfile(event) {
 
   message.textContent = "✅ プロフィールを保存しました！";
   setTimeout(function() { message.textContent = ""; }, 3000);
-  var correctAnswers = [false, false, false, false, false];
 
   // ✅ プロフィール保存後、クイズ全体を表示
   var quizSection = document.getElementById("quizSection");
